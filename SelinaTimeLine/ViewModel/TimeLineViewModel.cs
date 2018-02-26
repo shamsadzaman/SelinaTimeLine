@@ -11,7 +11,22 @@ namespace SelinaTimeLine.ViewModel
         private int _maxMinute;
         private int _maxHour;
         private TimeSpan _maxTimeSpan;
-        public double MaxValue { get; set; }
+        private double _maxValue;
+
+        public double MaxValue
+        {
+            get => _maxValue;
+            set
+            {
+                if (Math.Abs(_maxValue - value) < .0000001)
+                {
+                    return;
+                }
+
+                _maxValue = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public double CurrentValue
         {
@@ -33,7 +48,7 @@ namespace SelinaTimeLine.ViewModel
 
         public TimeSpan MaxTimeSpan
         {
-            get { return _maxTimeSpan; }
+            get => _maxTimeSpan;
             set
             {
                 if (_maxTimeSpan == value)
@@ -96,7 +111,7 @@ namespace SelinaTimeLine.ViewModel
 
         public TimeLineViewModel()
         {
-            MaxValue = 100;
+            MaxValue = 200;
             MaxTimeSpan = new TimeSpan(0, 15, 30);
 
             CurrentValue = 30;

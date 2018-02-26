@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelinaTimeLine", "SelinaTimeLine\SelinaTimeLine.csproj", "{4258B241-2120-4810-8964-B33167CE9891}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selina.UI.TimeLine", "SelinaTimeLine\Selina.UI.TimeLine.csproj", "{4258B241-2120-4810-8964-B33167CE9891}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
