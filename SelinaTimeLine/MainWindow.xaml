@@ -1,0 +1,68 @@
+﻿<Window x:Class="SelinaTimeLine.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SelinaTimeLine"
+        xmlns:viewModel="clr-namespace:SelinaTimeLine.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <viewModel:TimeLineViewModel />
+    </Window.DataContext>
+    <StackPanel VerticalAlignment="Center">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Slider Name="TimeLine" Minimum="0" 
+                    Maximum="{Binding MaxValue}"
+                    Value="{Binding CurrentValue, UpdateSourceTrigger=PropertyChanged}"
+                    TickPlacement="BottomRight" 
+                    TickFrequency="5" 
+                    AutoToolTipPlacement="TopLeft"
+                    VerticalAlignment="Center"
+                    />
+            <TextBlock Grid.Column="1" Text="{Binding CurrentTimeSpan,
+                StringFormat=hh\\:mm\\:ss\\.fff}" />
+            <TextBlock Grid.Column="2" Text="/" />
+            <TextBlock Grid.Column="3" Text="{Binding MaxTimeSpan}" 
+                   DockPanel.Dock="Right"/>
+
+        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="MaxValue" />
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding MaxValue}" />
+            
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="MaxHour" />
+            <Slider Grid.Row="1" Grid.Column="1" Maximum="12" 
+                    TickPlacement="BottomRight" TickFrequency="12"
+                    Value="{Binding MaxHour}"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="MaxMinute" />
+            <Slider Grid.Row="2" Grid.Column="1" Maximum="59" 
+                    TickPlacement="BottomRight" TickFrequency="59"
+                    Value="{Binding MaxMinute}"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="MaxSecond" />
+            <Slider Grid.Row="3" Grid.Column="1" Maximum="59" 
+                    TickPlacement="BottomRight" TickFrequency="59"
+                    Value="{Binding MaxSecond}"/>
+        </Grid>
+    </StackPanel>
+</Window>
+
