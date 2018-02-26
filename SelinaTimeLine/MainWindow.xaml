@@ -27,12 +27,21 @@
                     AutoToolTipPlacement="TopLeft"
                     VerticalAlignment="Center"
                     />
+            <Button Grid.Column="1" Visibility="{Binding LiveControlVisibility}">
+                <StackPanel Orientation="Horizontal" Width="50">
+                    <Rectangle RadiusX="4" RadiusY="4" Height="5" Width="5" Fill="Red" 
+                               VerticalAlignment="Center"
+                               Margin="2"/>
+                    <TextBlock Text="Live" />
+                </StackPanel>
+            </Button>
             <TextBlock Grid.Column="1" Text="{Binding CurrentTimeSpan,
-                StringFormat=hh\\:mm\\:ss\\.fff}" />
-            <TextBlock Grid.Column="2" Text="/" />
+                        StringFormat=hh\\:mm\\:ss\\.fff}" 
+                       Visibility="{Binding TimeMarkerVisibility}"/>
+            <TextBlock Grid.Column="2" Text="/" 
+                       Visibility="{Binding TimeMarkerVisibility}"/>
             <TextBlock Grid.Column="3" Text="{Binding MaxTimeSpan}" 
-                   DockPanel.Dock="Right"/>
-
+                       Visibility="{Binding TimeMarkerVisibility}"/>
         </Grid>
         <Grid>
             <Grid.RowDefinitions>

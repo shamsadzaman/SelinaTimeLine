@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using GalaSoft.MvvmLight;
 
 namespace SelinaTimeLine.ViewModel
@@ -12,6 +13,7 @@ namespace SelinaTimeLine.ViewModel
         private int _maxHour;
         private TimeSpan _maxTimeSpan;
         private double _maxValue;
+        private bool _isLiveStreaming;
 
         public double MaxValue
         {
@@ -109,12 +111,32 @@ namespace SelinaTimeLine.ViewModel
             }
         }
 
+        public Visibility LiveControlVisibility => IsLiveStreaming ? Visibility.Visible : Visibility.Collapsed;
+
+        public Visibility TimeMarkerVisibility => IsLiveStreaming ? Visibility.Collapsed : Visibility.Visible;
+
+        public bool IsLiveStreaming
+        {
+            get => _isLiveStreaming;
+            set
+            {
+                if (_isLiveStreaming == value)
+                {
+                    return;
+                }
+
+                _isLiveStreaming = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public TimeLineViewModel()
         {
             MaxValue = 200;
             MaxTimeSpan = new TimeSpan(0, 15, 30);
 
             CurrentValue = 30;
+            IsLiveStreaming = false;
         }
 
         public double ConvertTimeSpanToSliderValue(TimeSpan timeSpan)
