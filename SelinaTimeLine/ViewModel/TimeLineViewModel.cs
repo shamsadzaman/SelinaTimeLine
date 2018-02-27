@@ -35,7 +35,7 @@ namespace SelinaTimeLine.ViewModel
             get => _currentValue;
             set
             {
-                if (_currentValue == value)
+                if (Math.Abs(_currentValue - value) < .000001)
                 {
                     return;
                 }
@@ -74,10 +74,10 @@ namespace SelinaTimeLine.ViewModel
                 }
 
                 _currentTimeSpan = value;
-                _currentValue = ConvertTimeSpanToSliderValue(_currentTimeSpan);
+                //_currentValue = ConvertTimeSpanToSliderValue(_currentTimeSpan);
 
                 RaisePropertyChanged();
-                RaisePropertyChanged(() => CurrentValue);
+                //RaisePropertyChanged(() => CurrentValue);
             }
         }
 
@@ -139,14 +139,14 @@ namespace SelinaTimeLine.ViewModel
             IsLiveStreaming = false;
         }
 
-        public double ConvertTimeSpanToSliderValue(TimeSpan timeSpan)
-        {
-            var sliderValuePerTick = MaxValue / MaxTimeSpan.Ticks;
+        //public double ConvertTimeSpanToSliderValue(TimeSpan timeSpan)
+        //{
+        //    var sliderValuePerTick = MaxValue / MaxTimeSpan.Ticks;
 
-            var sliderValue = timeSpan.Ticks * sliderValuePerTick;
+        //    var sliderValue = timeSpan.Ticks * sliderValuePerTick;
 
-            return sliderValue;
-        }
+        //    return sliderValue;
+        //}
 
         public TimeSpan ConvertSliderValueToTimeSpan(double sliderValue)
         {

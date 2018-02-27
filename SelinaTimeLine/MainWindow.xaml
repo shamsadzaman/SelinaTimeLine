@@ -5,12 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SelinaTimeLine"
         xmlns:viewModel="clr-namespace:SelinaTimeLine.ViewModel"
+        xmlns:controls="clr-namespace:SelinaTimeLine.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.DataContext>
         <viewModel:TimeLineViewModel />
     </Window.DataContext>
     <StackPanel VerticalAlignment="Center">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ToggleButton Name="LiveButton" Height="20">Show Live Button</ToggleButton>
+            <ToggleButton Grid.Row="0" Grid.Column="1" Name="LiveRightNow" Height="20">Live Right now</ToggleButton>
+
+            <controls:TimeLineSlider Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MaxValue="{Binding MaxValue}" 
+                                     MaxTimeSpan="{Binding MaxTimeSpan}"
+                                     IsLiveStreaming="{Binding ElementName=LiveButton, 
+                                        Path=IsChecked}"
+                                     IsLiveRightNow="{Binding ElementName=LiveRightNow,
+                                        Path=IsChecked}"/>
+        </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -19,13 +40,19 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <Slider Name="TimeLine" Minimum="0" 
+            <Slider Name="TimeLine" Minimum="0" Background="Black"
                     Maximum="{Binding MaxValue}"
                     Value="{Binding CurrentValue, UpdateSourceTrigger=PropertyChanged}"
                     TickPlacement="BottomRight" 
                     TickFrequency="5" 
                     AutoToolTipPlacement="TopLeft"
                     VerticalAlignment="Center"
+                    AutoToolTipPrecision="3"
+                    IsMoveToPointEnabled="True"
+                    IsSelectionRangeEnabled="True"
+                    SelectionStart="10"
+                    SelectionEnd="50"
+                    
                     />
             <Button Grid.Column="1" Visibility="{Binding LiveControlVisibility}">
                 <StackPanel Orientation="Horizontal" Width="50">
@@ -45,6 +72,7 @@
         </Grid>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -71,6 +99,9 @@
             <Slider Grid.Row="3" Grid.Column="1" Maximum="59" 
                     TickPlacement="BottomRight" TickFrequency="59"
                     Value="{Binding MaxSecond}"/>
+            
+            <TextBlock Grid.Row="4" Grid.Column="0">Ticks</TextBlock>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding ElementName=TimeLine, Path=Ticks}"></TextBlock>
         </Grid>
     </StackPanel>
 </Window>
