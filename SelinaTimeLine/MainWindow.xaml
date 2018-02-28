@@ -25,12 +25,14 @@
             <ToggleButton Name="LiveButton" Height="20">Show Live Button</ToggleButton>
             <ToggleButton Grid.Row="0" Grid.Column="1" Name="LiveRightNow" Height="20">Live Right now</ToggleButton>
 
-            <controls:TimeLineSlider Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MaxValue="{Binding MaxValue}" 
+            <controls:TimeLineSlider Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                                     MaxValue="{Binding MaxValue}" 
                                      MaxTimeSpan="{Binding MaxTimeSpan}"
                                      IsLiveStreaming="{Binding ElementName=LiveButton, 
                                         Path=IsChecked}"
                                      IsLiveRightNow="{Binding ElementName=LiveRightNow,
                                         Path=IsChecked}"/>
+            
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>

@@ -1,0 +1,95 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SelinaTimeLine.Styles"
+                    xmlns:controls="clr-namespace:SelinaTimeLine.Controls">
+    <Style x:Key="RepeatButtonIncreaseZoomStyle" TargetType="{x:Type RepeatButton}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="IsTabStop" Value="false" />
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Rectangle Height="2" Fill="{DynamicResource TimeLineFontSolidColorBrush}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="RepeatButtonDecreaseZoomStyle" TargetType="{x:Type RepeatButton}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="IsTabStop" Value="false" />
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Rectangle Height="2" Fill="{DynamicResource TimeLineFontSolidColorBrush}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ThumbExportStyle" TargetType="{x:Type Thumb}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border x:Name="ThumbValue"
+                            Width="10"
+                            Height="10"
+                            Margin="-10 0 0 0"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="{DynamicResource ButtonNormalForegroundBrush}">
+                        <Grid>
+                            <ContentPresenter Margin="2 0 0 0"
+                                              Content="{StaticResource IconStartExportThumb}"
+                                              Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:RangeSelectionSlider}},
+                                                                   Path=StartExportThumbVisibility}" />
+                            <ContentPresenter Content="{StaticResource IconEndExportThumb}" Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:RangeSelectionSlider}}, 
+                                Path=EndExportThumbVisibility}" />
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ThumbValue" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="5"
+                                                      Opacity="0.75"
+                                                      ShadowDepth="0"
+                                                      Color="{DynamicResource DropShadowColor}" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="ThumbValue" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="5"
+                                                      Opacity="0.75"
+                                                      ShadowDepth="0"
+                                                      Color="{DynamicResource DropShadowColor}" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type controls:RangeSelectionSlider}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Slider}">
+                    <Track x:Name="PART_Track" Height="42">
+                        <Track.Thumb>
+                            <Thumb x:Name="Thumb"
+                                   Margin="0 -30 0 0"
+                                   Style="{DynamicResource ThumbExportStyle}" />
+                        </Track.Thumb>
+                    </Track>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
