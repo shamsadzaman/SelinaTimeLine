@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SelinaTimeLine.Controls
 {
     /// <summary>
-    /// Interaction logic for RangeSelectionSlider.xaml
+    /// Interaction logic for MainSlider.xaml
     /// </summary>
-    public partial class RangeSelectionSlider
+    public partial class MainSlider 
     {
-        public RangeSelectionSlider()
+        public MainSlider()
         {
             InitializeComponent();
         }

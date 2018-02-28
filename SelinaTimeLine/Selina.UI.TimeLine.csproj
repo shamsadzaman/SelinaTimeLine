@@ -70,6 +70,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\MainSlider.xaml.cs">
+      <DependentUpon>MainSlider.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RangeSelectionSlider.xaml.cs">
       <DependentUpon>RangeSelectionSlider.xaml</DependentUpon>
     </Compile>
@@ -82,6 +85,10 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\TimeLineViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="Controls\MainSlider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\RangeSelectionSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -103,6 +110,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Styles\RangeSelectionSliderStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TimelineSliderStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

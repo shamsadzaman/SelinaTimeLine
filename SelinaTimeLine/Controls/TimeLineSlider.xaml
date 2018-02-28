@@ -8,6 +8,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Name="_self">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/TimelineSliderStyle.xaml" />
+                <ResourceDictionary Source="../Styles/RangeSelectionSliderStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -17,7 +25,9 @@
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
-        <Slider Name="TimeLine" Minimum="0" Background="Black"
+        <Slider Name="TimeLine"
+                Style="{StaticResource MainSlider}"
+                Minimum="0" Background="Black"
                 Maximum="{Binding MaxValue, ElementName=_self}"
                 Value="{Binding CurrentValue, UpdateSourceTrigger=PropertyChanged, ElementName=_self}"
                 TickPlacement="BottomRight" 
@@ -29,8 +39,13 @@
                 IsSelectionRangeEnabled="True"
                 SelectionStart="10"
                 SelectionEnd="50"
-                    
-        />
+                />
+        
+        <!--<local:MainSlider Name="TimeLine" Minimum="0"
+                          Maximum="{Binding MaxValue, ElementName=_self}" />-->
+        
+        <local:RangeSelectionSlider Grid.Column="0" />
+        <local:RangeSelectionSlider Grid.Column="0" />
         
         <Button Grid.Column="2" Visibility="{Binding IsLiveStreaming, ElementName=_self, Converter={converters:BoolToVisibilityConverter}}" Width="45">
             <StackPanel Orientation="Horizontal">
