@@ -8,60 +8,54 @@
              d:DesignHeight="300" d:DesignWidth="300"
              Name="root">
     <UserControl.Resources>
-        <ControlTemplate x:Key="simpleSlider" TargetType="{x:Type Slider}">
-            <Border SnapsToDevicePixels="true"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-
-
-                    <Track x:Name="PART_Track" Grid.Row="1">
-                        <Track.Thumb>
-                            <Thumb x:Name="Thumb">
-                                <Thumb.Template>
-                                    <ControlTemplate TargetType="Thumb">
-                                        <Rectangle Fill="GreenYellow"
-                                                   Stroke="Black"
-                                                   StrokeThickness="1"
-                                                   Width="10"
-                                                   Height="18"
-                                                   SnapsToDevicePixels="True"/>
-                                    </ControlTemplate>
-                                </Thumb.Template>
-                            </Thumb>
-                        </Track.Thumb>
-                    </Track>
-                </Grid>
-            </Border>
+        <ControlTemplate x:Key="SimpleSliderTemplate" TargetType="{x:Type Slider}">
+            <Grid>
+                <Track x:Name="PART_Track" Grid.Row="1">
+                    <Track.Thumb>
+                        <Thumb x:Name="Thumb">
+                            <Thumb.Template>
+                                <ControlTemplate TargetType="Thumb">
+                                    <Rectangle Fill="GreenYellow"
+                                           Stroke="Black"
+                                           StrokeThickness="1"
+                                           Width="10"
+                                           Height="18"
+                                           SnapsToDevicePixels="True"/>
+                                </ControlTemplate>
+                            </Thumb.Template>
+                        </Thumb>
+                    </Track.Thumb>
+                </Track>
+            </Grid>
         </ControlTemplate>
     </UserControl.Resources>
     <Grid VerticalAlignment="Top">
-        <Border BorderThickness="0,1,0,0"
-                BorderBrush="Black"
+        <!--<Border Name="RangeBorder"
+                BorderThickness="0,1,0,0"
+                BorderBrush="Red"
                 VerticalAlignment="Center"
-                Height="1"
-                Margin="5,0,5,0"/>
+                Height="2"
+                Margin="5,0,5,0"
+                Opacity=".8"/>-->
+        
+        <!--<Rectangle Name="RangeBorder"
+                   Fill="Aqua"
+                   Opacity=".2"
+                   Height="5"/>-->
 
         <Slider x:Name="LowerSlider"
                 Minimum="{Binding ElementName=root, Path=Minimum}"
                 Maximum="{Binding ElementName=root, Path=Maximum}"
                 Value="{Binding ElementName=root, Path=LowerValue, Mode=TwoWay}"
-                Template="{StaticResource simpleSlider}"
+                Template="{StaticResource SimpleSliderTemplate}"
                 Margin="0,0,10,0"
-                AutoToolTipPlacement="TopLeft"
-        />
+                AutoToolTipPlacement="TopLeft"/>
         <Slider x:Name="UpperSlider"
                 Minimum="{Binding ElementName=root, Path=Minimum}"
                 Maximum="{Binding ElementName=root, Path=Maximum}"
                 Value="{Binding ElementName=root, Path=UpperValue, Mode=TwoWay}"
-                Template="{StaticResource simpleSlider}"
+                Template="{StaticResource SimpleSliderTemplate}"
                 Margin="10,0,0,0"
-                AutoToolTipPlacement="TopLeft"
-        />
+                AutoToolTipPlacement="TopLeft"/>
     </Grid>
 </UserControl>

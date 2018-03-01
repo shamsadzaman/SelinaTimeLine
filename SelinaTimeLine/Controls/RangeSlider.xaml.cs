@@ -12,13 +12,19 @@ namespace SelinaTimeLine.Controls
         public RangeSlider()
         {
             InitializeComponent();
-            this.Loaded += RangeSlider_Loaded;
+            Loaded += RangeSlider_Loaded;
+            LayoutUpdated += OnLayoutUpdated;
+        }
+
+        private void OnLayoutUpdated(object sender, EventArgs eventArgs)
+        {
+            //SetProgressBorder();
         }
 
         public double Minimum
         {
-            get { return (double)GetValue(MinimumProperty); }
-            set { SetValue(MinimumProperty, value); }
+            get => (double)GetValue(MinimumProperty);
+            set => SetValue(MinimumProperty, value);
         }
 
         public static readonly DependencyProperty MinimumProperty =
@@ -26,8 +32,8 @@ namespace SelinaTimeLine.Controls
 
         public double LowerValue
         {
-            get { return (double)GetValue(LowerValueProperty); }
-            set { SetValue(LowerValueProperty, value); }
+            get => (double)GetValue(LowerValueProperty);
+            set => SetValue(LowerValueProperty, value);
         }
 
         public static readonly DependencyProperty LowerValueProperty =
@@ -35,8 +41,8 @@ namespace SelinaTimeLine.Controls
 
         public double UpperValue
         {
-            get { return (double)GetValue(UpperValueProperty); }
-            set { SetValue(UpperValueProperty, value); }
+            get => (double)GetValue(UpperValueProperty);
+            set => SetValue(UpperValueProperty, value);
         }
 
         public static readonly DependencyProperty UpperValueProperty =
@@ -44,8 +50,8 @@ namespace SelinaTimeLine.Controls
 
         public double Maximum
         {
-            get { return (double)GetValue(MaximumProperty); }
-            set { SetValue(MaximumProperty, value); }
+            get => (double)GetValue(MaximumProperty);
+            set => SetValue(MaximumProperty, value);
         }
 
         public static readonly DependencyProperty MaximumProperty =
@@ -60,12 +66,22 @@ namespace SelinaTimeLine.Controls
         private void LowerSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             UpperSlider.Value = Math.Max(UpperSlider.Value, LowerSlider.Value);
+            //SetProgressBorder();
         }
 
         private void UpperSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             LowerSlider.Value = Math.Min(UpperSlider.Value, LowerSlider.Value);
+            //SetProgressBorder();
         }
 
+        //private void SetProgressBorder()
+        //{
+        //    var lowerPoint = (this.ActualWidth * (LowerValue - Minimum)) / (Maximum - Minimum);
+        //    var upperPoint = (this.ActualWidth * (UpperValue - Minimum)) / (Maximum - Minimum);
+        //    upperPoint = this.ActualWidth - upperPoint;
+        //    RangeBorder.Margin = new Thickness(lowerPoint, 0, upperPoint, 0);
+        //    //RangeBorder.Width = upperPoint;
+        //}
     }
 }

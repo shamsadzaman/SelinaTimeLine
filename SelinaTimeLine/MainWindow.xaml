@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:SelinaTimeLine"
         xmlns:viewModel="clr-namespace:SelinaTimeLine.ViewModel"
         xmlns:controls="clr-namespace:SelinaTimeLine.Controls"
+        xmlns:converters="clr-namespace:SelinaTimeLine.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.DataContext>
         <viewModel:TimeLineViewModel />
     </Window.DataContext>
     <StackPanel VerticalAlignment="Center">
-        <Grid>
+        <Grid Margin="0 0 0 20">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -25,18 +26,22 @@
             </Grid.ColumnDefinitions>
             <ToggleButton Name="LiveButton" Height="20">Show Live Button</ToggleButton>
             <ToggleButton Grid.Row="0" Grid.Column="1" Name="LiveRightNow" Height="20">Live Right now</ToggleButton>
+            <ToggleButton Grid.Row="0" Grid.Column="2" Name="ShowRangeSlider" Height="20">Show Range Slider</ToggleButton>
 
             <controls:TimeLineSlider Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MaxValue="{Binding MaxValue}" 
                                      MaxTimeSpan="{Binding MaxTimeSpan}"
-                                     
-                                     CurrentTimeSpan="{Binding CurrentTimeSpan, Mode=TwoWay}"/>
+                                     CurrentTimeSpan="{Binding CurrentTimeSpan, Mode=TwoWay}"
+                                     SelectionStart="{Binding ElementName=MainRangeSlider, Path=LowerValue, Mode=TwoWay}"
+                                     SelectionEnd="{Binding ElementName=MainRangeSlider, Path=UpperValue, Mode=TwoWay}"/>
 
-            <controls:RangeSlider Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+            <controls:RangeSlider x:Name="MainRangeSlider" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                   Minimum="{Binding Minimum}"
                                   Maximum="{Binding MaxValue}" 
                                   LowerValue="{Binding LowerValue, Mode=TwoWay}"
                                   UpperValue="{Binding UpperValue, Mode=TwoWay}"
-                                  />
+                                  Visibility="{Binding ElementName=ShowRangeSlider, 
+                                    Path=IsChecked, 
+                                    Converter={converters:BoolToVisibilityConverter}}"/>
             
             <controls:TimeDisplay Grid.Row="1" Grid.Column="2"
                                   CurrentTimeSpan="{Binding CurrentTimeSpan, Mode=TwoWay}"
@@ -54,7 +59,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <!--<Slider Name="TimeLine" Minimum="0" Background="Black"
+            <Slider Name="TimeLine" Minimum="0" Background="Black"
                     Maximum="{Binding MaxValue}"
                     Value="{Binding CurrentValue, UpdateSourceTrigger=PropertyChanged}"
                     TickPlacement="BottomRight" 
@@ -65,13 +70,12 @@
                     IsMoveToPointEnabled="True"
                     IsSelectionRangeEnabled="True"
                     SelectionStart="10"
-                    SelectionEnd="50"
+                    SelectionEnd="50" />
                     
-                    />-->
-            <!--<controls:RangeSlider x:Name="RangeSlider" Minimum="{Binding Minimum}" 
+            <controls:RangeSlider x:Name="RangeSlider" Minimum="{Binding Minimum}" 
                                   Maximum="{Binding MaxValue}" 
                                   LowerValue="{Binding LowerValue, Mode=TwoWay}"
-                                  UpperValue="{Binding UpperValue, Mode=TwoWay}"/>-->
+                                  UpperValue="{Binding UpperValue, Mode=TwoWay}"/>
             
             <Button Grid.Column="1" Visibility="{Binding LiveControlVisibility}">
                 <StackPanel Orientation="Horizontal" Width="50">
@@ -89,6 +93,7 @@
             <TextBlock Grid.Column="3" Text="{Binding MaxTimeSpan}" 
                        Visibility="{Binding TimeMarkerVisibility}"/>
         </Grid>
+        
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -122,13 +127,13 @@
                     Value="{Binding MaxSecond}"/>
             
             <TextBlock Grid.Row="4" Grid.Column="0">Current time</TextBlock>
-            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding CurrentTimeSpan}"></TextBlock>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding CurrentTimeSpan}" />
 
             <TextBlock Grid.Row="5" Grid.Column="0">Lower value</TextBlock>
-            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding LowerValue}"></TextBlock>
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding LowerValue}" />
 
             <TextBlock Grid.Row="6" Grid.Column="0">Upper value</TextBlock>
-            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding UpperValue}"></TextBlock>
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding UpperValue}" />
         </Grid>
     </StackPanel>
 </Window>

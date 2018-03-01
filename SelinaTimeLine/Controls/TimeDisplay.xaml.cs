@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SelinaTimeLine.Controls
 {
@@ -32,26 +21,26 @@ namespace SelinaTimeLine.Controls
 
         public bool IsLiveStreaming
         {
-            get { return (bool) GetValue(IsLiveStreamingProperty); }
-            set { SetValue(IsLiveStreamingProperty, value); }
+            get => (bool) GetValue(IsLiveStreamingProperty);
+            set => SetValue(IsLiveStreamingProperty, value);
         }
 
         public bool IsLiveRightNow
         {
-            get { return (bool) GetValue(IsLiveRightNowProperty); }
-            set { SetValue(IsLiveRightNowProperty, value); }
+            get => (bool) GetValue(IsLiveRightNowProperty);
+            set => SetValue(IsLiveRightNowProperty, value);
         }
 
         public TimeSpan CurrentTimeSpan
         {
-            get { return (TimeSpan) GetValue(CurrentTimeSpanProperty); }
-            set { SetValue(CurrentTimeSpanProperty, value); }
+            get => (TimeSpan) GetValue(CurrentTimeSpanProperty);
+            set => SetValue(CurrentTimeSpanProperty, value);
         }
 
         public TimeSpan MaxTimeSpan
         {
-            get { return (TimeSpan) GetValue(MaxTimeSpanProperty); }
-            set { SetValue(MaxTimeSpanProperty, value); }
+            get => (TimeSpan) GetValue(MaxTimeSpanProperty);
+            set => SetValue(MaxTimeSpanProperty, value);
         }
     }
 }

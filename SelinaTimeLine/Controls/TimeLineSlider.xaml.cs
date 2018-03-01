@@ -23,6 +23,8 @@ namespace SelinaTimeLine.Controls
 
         public static readonly DependencyProperty IsLiveRightNowProperty = DependencyProperty.Register("IsLiveRightNow", typeof(bool), typeof(TimeLineSlider), new PropertyMetadata(default(bool)));
         public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
+        public static readonly DependencyProperty SelectionStartProperty = DependencyProperty.Register("SelectionStart", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
+        public static readonly DependencyProperty SelectionEndProperty = DependencyProperty.Register("SelectionEnd", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
 
         public bool IsLiveStreaming
         {
@@ -67,8 +69,20 @@ namespace SelinaTimeLine.Controls
 
         public double Minimum
         {
-            get { return (double) GetValue(MinimumProperty); }
-            set { SetValue(MinimumProperty, value); }
+            get => (double) GetValue(MinimumProperty);
+            set => SetValue(MinimumProperty, value);
+        }
+
+        public double SelectionStart
+        {
+            get { return (double) GetValue(SelectionStartProperty); }
+            set { SetValue(SelectionStartProperty, value); }
+        }
+
+        public double SelectionEnd
+        {
+            get { return (double) GetValue(SelectionEndProperty); }
+            set { SetValue(SelectionEndProperty, value); }
         }
 
         public TimeLineSlider()
