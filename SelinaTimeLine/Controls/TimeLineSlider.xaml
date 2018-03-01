@@ -9,14 +9,6 @@
              d:DesignHeight="300" d:DesignWidth="300"
              Name="_self">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="66"/>
-            <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="50"/>
-        </Grid.ColumnDefinitions>
-
         <Slider Name="TimeLine" Minimum="0" Background="Black"
                 Maximum="{Binding MaxValue, ElementName=_self}"
                 Value="{Binding CurrentValue, UpdateSourceTrigger=PropertyChanged, ElementName=_self}"
@@ -29,28 +21,5 @@
                 IsSelectionRangeEnabled="True"
                     
         />
-        
-        
-        
-        <Button Grid.Column="2" Visibility="{Binding IsLiveStreaming, ElementName=_self, Converter={converters:BoolToVisibilityConverter}}" Width="45">
-            <StackPanel Orientation="Horizontal">
-                <Rectangle RadiusX="4" RadiusY="4" Height="5" Width="5" Fill="Red" 
-                           VerticalAlignment="Center"
-                           Visibility="{Binding IsLiveRightNow, ElementName=_self, Converter={converters:BoolToVisibilityConverter}}"
-                           />
-                <Rectangle RadiusX="4" RadiusY="4" Height="5" Width="5" Fill="Gray" 
-                           VerticalAlignment="Center"
-                           Visibility="{Binding IsLiveRightNow, ElementName=_self, Converter={converters:InverseBoolToVisibilityConverter}}"
-                />
-                <TextBlock Text="Live" Margin="3 0" />
-            </StackPanel>
-        </Button>
-        <TextBlock Grid.Column="2" Text="{Binding CurrentTimeSpan,
-                        StringFormat=hh\\:mm\\:ss\\.fff, ElementName=_self}" 
-                   Visibility="{Binding IsLiveStreaming, ElementName=_self, Converter={converters:InverseBoolToVisibilityConverter}}"/>
-        <TextBlock Grid.Column="3" Text="/" 
-                   Visibility="{Binding IsLiveStreaming, ElementName=_self, Converter={converters:InverseBoolToVisibilityConverter}}"/>
-        <TextBlock Grid.Column="4" Text="{Binding MaxTimeSpan, ElementName=_self}" 
-                   Visibility="{Binding IsLiveStreaming, ElementName=_self, Converter={converters:InverseBoolToVisibilityConverter}}"/>
-    </Grid>
+        </Grid>
 </UserControl>

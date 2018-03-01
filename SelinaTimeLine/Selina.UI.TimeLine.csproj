@@ -73,6 +73,9 @@
     <Compile Include="Controls\RangeSlider.xaml.cs">
       <DependentUpon>RangeSlider.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TimeDisplay.xaml.cs">
+      <DependentUpon>TimeDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TimeLineSlider.xaml.cs">
       <DependentUpon>TimeLineSlider.xaml</DependentUpon>
     </Compile>
@@ -83,6 +86,10 @@
     <Compile Include="ViewModel\TimeLineViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="Controls\RangeSlider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TimeDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -19,26 +19,32 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="125"/>
             </Grid.ColumnDefinitions>
             <ToggleButton Name="LiveButton" Height="20">Show Live Button</ToggleButton>
             <ToggleButton Grid.Row="0" Grid.Column="1" Name="LiveRightNow" Height="20">Live Right now</ToggleButton>
 
             <controls:TimeLineSlider Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MaxValue="{Binding MaxValue}" 
                                      MaxTimeSpan="{Binding MaxTimeSpan}"
-                                     IsLiveStreaming="{Binding ElementName=LiveButton, 
-                                        Path=IsChecked}"
-                                     IsLiveRightNow="{Binding ElementName=LiveRightNow,
-                                        Path=IsChecked}"
+                                     
                                      CurrentTimeSpan="{Binding CurrentTimeSpan, Mode=TwoWay}"/>
 
-            <controls:RangeSlider Grid.Row="1" Grid.Column="0" 
+            <controls:RangeSlider Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                   Minimum="{Binding Minimum}"
                                   Maximum="{Binding MaxValue}" 
                                   LowerValue="{Binding LowerValue, Mode=TwoWay}"
                                   UpperValue="{Binding UpperValue, Mode=TwoWay}"
                                   />
+            
+            <controls:TimeDisplay Grid.Row="1" Grid.Column="2"
+                                  CurrentTimeSpan="{Binding CurrentTimeSpan, Mode=TwoWay}"
+                                  MaxTimeSpan="{Binding MaxTimeSpan}"
+                                  IsLiveStreaming="{Binding ElementName=LiveButton, 
+                                        Path=IsChecked}"
+                                  IsLiveRightNow="{Binding ElementName=LiveRightNow,
+                                        Path=IsChecked}"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
