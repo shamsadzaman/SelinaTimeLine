@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace SelinaTimeLine.Controls
@@ -11,6 +12,7 @@ namespace SelinaTimeLine.Controls
         public RangeSlider()
         {
             InitializeComponent();
+            this.Loaded += RangeSlider_Loaded;
         }
 
         public double Minimum
@@ -48,5 +50,22 @@ namespace SelinaTimeLine.Controls
 
         public static readonly DependencyProperty MaximumProperty =
             DependencyProperty.Register("Maximum", typeof(double), typeof(RangeSlider), new UIPropertyMetadata(1d));
+
+        void RangeSlider_Loaded(object sender, RoutedEventArgs e)
+        {
+            LowerSlider.ValueChanged += LowerSlider_ValueChanged;
+            UpperSlider.ValueChanged += UpperSlider_ValueChanged;
+        }
+
+        private void LowerSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            UpperSlider.Value = Math.Max(UpperSlider.Value, LowerSlider.Value);
+        }
+
+        private void UpperSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            LowerSlider.Value = Math.Min(UpperSlider.Value, LowerSlider.Value);
+        }
+
     }
 }
