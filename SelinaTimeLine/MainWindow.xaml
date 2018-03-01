@@ -32,6 +32,13 @@
                                      IsLiveRightNow="{Binding ElementName=LiveRightNow,
                                         Path=IsChecked}"
                                      CurrentTimeSpan="{Binding CurrentTimeSpan, Mode=TwoWay}"/>
+
+            <controls:RangeSlider Grid.Row="1" Grid.Column="0" 
+                                  Minimum="{Binding Minimum}"
+                                  Maximum="{Binding MaxValue}" 
+                                  LowerValue="{Binding LowerValue, Mode=TwoWay}"
+                                  UpperValue="{Binding UpperValue, Mode=TwoWay}"
+                                  />
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -55,10 +62,10 @@
                     SelectionEnd="50"
                     
                     />-->
-            <controls:RangeSlider x:Name="RangeSlider" Minimum="{Binding Minimum}" 
+            <!--<controls:RangeSlider x:Name="RangeSlider" Minimum="{Binding Minimum}" 
                                   Maximum="{Binding MaxValue}" 
                                   LowerValue="{Binding LowerValue, Mode=TwoWay}"
-                                  UpperValue="{Binding UpperValue, Mode=TwoWay}"/>
+                                  UpperValue="{Binding UpperValue, Mode=TwoWay}"/>-->
             
             <Button Grid.Column="1" Visibility="{Binding LiveControlVisibility}">
                 <StackPanel Orientation="Horizontal" Width="50">

@@ -27,10 +27,10 @@
                 AutoToolTipPrecision="3"
                 IsMoveToPointEnabled="True"
                 IsSelectionRangeEnabled="True"
-                SelectionStart="10"
-                SelectionEnd="50"
                     
         />
+        
+        
         
         <Button Grid.Column="2" Visibility="{Binding IsLiveStreaming, ElementName=_self, Converter={converters:BoolToVisibilityConverter}}" Width="45">
             <StackPanel Orientation="Horizontal">
