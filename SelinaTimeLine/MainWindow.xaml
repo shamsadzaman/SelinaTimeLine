@@ -30,7 +30,8 @@
                                      IsLiveStreaming="{Binding ElementName=LiveButton, 
                                         Path=IsChecked}"
                                      IsLiveRightNow="{Binding ElementName=LiveRightNow,
-                                        Path=IsChecked}"/>
+                                        Path=IsChecked}"
+                                     CurrentTimeSpan="{Binding CurrentTimeSpan, Mode=TwoWay}"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -40,7 +41,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <Slider Name="TimeLine" Minimum="0" Background="Black"
+            <!--<Slider Name="TimeLine" Minimum="0" Background="Black"
                     Maximum="{Binding MaxValue}"
                     Value="{Binding CurrentValue, UpdateSourceTrigger=PropertyChanged}"
                     TickPlacement="BottomRight" 
@@ -53,7 +54,12 @@
                     SelectionStart="10"
                     SelectionEnd="50"
                     
-                    />
+                    />-->
+            <controls:RangeSlider x:Name="RangeSlider" Minimum="{Binding Minimum}" 
+                                  Maximum="{Binding MaxValue}" 
+                                  LowerValue="{Binding LowerValue, Mode=TwoWay}"
+                                  UpperValue="{Binding UpperValue, Mode=TwoWay}"/>
+            
             <Button Grid.Column="1" Visibility="{Binding LiveControlVisibility}">
                 <StackPanel Orientation="Horizontal" Width="50">
                     <Rectangle RadiusX="4" RadiusY="4" Height="5" Width="5" Fill="Red" 
@@ -72,6 +78,8 @@
         </Grid>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -100,8 +108,14 @@
                     TickPlacement="BottomRight" TickFrequency="59"
                     Value="{Binding MaxSecond}"/>
             
-            <TextBlock Grid.Row="4" Grid.Column="0">Ticks</TextBlock>
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding ElementName=TimeLine, Path=Ticks}"></TextBlock>
+            <TextBlock Grid.Row="4" Grid.Column="0">Current time</TextBlock>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding CurrentTimeSpan}"></TextBlock>
+
+            <TextBlock Grid.Row="5" Grid.Column="0">Lower value</TextBlock>
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding LowerValue}"></TextBlock>
+
+            <TextBlock Grid.Row="6" Grid.Column="0">Upper value</TextBlock>
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding UpperValue}"></TextBlock>
         </Grid>
     </StackPanel>
 </Window>

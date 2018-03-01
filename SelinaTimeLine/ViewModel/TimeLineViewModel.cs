@@ -14,6 +14,8 @@ namespace SelinaTimeLine.ViewModel
         private TimeSpan _maxTimeSpan;
         private double _maxValue;
         private bool _isLiveStreaming;
+        private double _lowerValue;
+        private double _upperValue;
 
         public double MaxValue
         {
@@ -129,6 +131,40 @@ namespace SelinaTimeLine.ViewModel
                 RaisePropertyChanged();
             }
         }
+
+        public double Minimum => 0;
+
+        public double LowerValue
+        {
+            get => _lowerValue;
+            set
+            {
+                if (Math.Abs(_lowerValue - value) < .00000001)
+                {
+                    return;
+                }
+
+                _lowerValue = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public double UpperValue
+        {
+            get => _upperValue;
+            set
+            {
+                if (Math.Abs(_upperValue - value) < Tolerance)
+                {
+                    return;
+                }
+
+                _upperValue = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public const double Tolerance = 0.00000001;
 
         public TimeLineViewModel()
         {
