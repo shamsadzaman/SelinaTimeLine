@@ -72,10 +72,10 @@
                     SelectionStart="10"
                     SelectionEnd="50" />
                     
-            <controls:RangeSlider x:Name="RangeSlider" Minimum="{Binding Minimum}" 
+            <!--<controls:RangeSlider x:Name="RangeSlider" Minimum="{Binding Minimum}" 
                                   Maximum="{Binding MaxValue}" 
                                   LowerValue="{Binding LowerValue, Mode=TwoWay}"
-                                  UpperValue="{Binding UpperValue, Mode=TwoWay}"/>
+                                  UpperValue="{Binding UpperValue, Mode=TwoWay}"/>-->
             
             <Button Grid.Column="1" Visibility="{Binding LiveControlVisibility}">
                 <StackPanel Orientation="Horizontal" Width="50">
