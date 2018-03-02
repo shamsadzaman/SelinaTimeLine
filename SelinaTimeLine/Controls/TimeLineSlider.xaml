@@ -30,9 +30,10 @@
         <ControlTemplate x:Key="MainSliderTemplate" TargetType="{x:Type Slider}">
             <Grid>
                 <Canvas VerticalAlignment="Center">
-                    <Border x:Name="PART_SelectionRange" HorizontalAlignment="Left"
-                            Height="5"
-                            Background="Blue"></Border>
+                    <Rectangle x:Name="PART_SelectionRange" HorizontalAlignment="Left"
+                               Height="5"
+                               Fill="Green"
+                               Opacity=".5"/>
                 </Canvas>
                 <Track x:Name="PART_Track">
                     <Track.DecreaseRepeatButton>
@@ -48,11 +49,11 @@
                             <Thumb.Template>
                                 <ControlTemplate TargetType="Thumb">
                                     <Ellipse Fill="Orange" 
-                                         Stroke="Black"
-                                         StrokeThickness="1"
-                                         Width="15"
-                                         Height="15"
-                                         SnapsToDevicePixels="True"/>
+                                             Stroke="Black"
+                                             StrokeThickness="1"
+                                             Width="15"
+                                             Height="15"
+                                             SnapsToDevicePixels="True" />
                                 </ControlTemplate>
                             </Thumb.Template>
                         </Thumb>
