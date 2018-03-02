@@ -13,7 +13,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Rectangle Height="5" Fill="Green" />
+                        <Rectangle Height="30" Fill="Transparent" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -22,7 +22,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Rectangle Height="5" Fill="Gray" />
+                        <Rectangle Height="30" Fill="Transparent" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -60,6 +60,79 @@
                 </Track>
             </Grid>
         </ControlTemplate>
+
+        <Style x:Key="CustomThumbForSlider" TargetType="{x:Type Thumb}">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Ellipse Fill="#FF8F4040" Stroke="#FF000000" Height="15" Width="15"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SliderRepeatButtonStyle" TargetType="{x:Type RepeatButton}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Rectangle Fill="Transparent"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="HorizontalSliderTrackNormalBackground" Color="#FFE7EAEA"/>
+        <LinearGradientBrush x:Key="HorizontalSliderTrackNormalBorder" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#FFAEB1AF" Offset="0.1"/>
+            <GradientStop Color="White" Offset=".9"/>
+        </LinearGradientBrush>
+        <Style x:Key="MyCustomStyleForSlider" TargetType="{x:Type Slider}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Slider}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TickBar x:Name="TopTick" Visibility="Collapsed" Fill="{TemplateBinding Foreground}" Placement="Top" Height="4" Grid.Row="0"/>
+                                <TickBar x:Name="BottomTick" Visibility="Collapsed" Fill="{TemplateBinding Foreground}" Placement="Bottom" Height="4" Grid.Row="0"/>
+                                <Border x:Name="TrackBackground" 
+                                        Background="{StaticResource HorizontalSliderTrackNormalBackground}"
+                                        BorderBrush="{StaticResource HorizontalSliderTrackNormalBorder}"                                        
+                                        BorderThickness="1" CornerRadius="1"
+                                        Margin="5,0" VerticalAlignment="Center" Height="4.0" Grid.Row="1" >
+                                    <Canvas Margin="-6,-1">
+                                        <Rectangle  x:Name="PART_SelectionRange" Height="4.0"
+                                                   Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
+                                                   Stroke="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"
+                                                   StrokeThickness="1.0"/>
+                                    </Canvas>
+                                </Border>
+                                <Track x:Name="PART_Track" Grid.Row="1">
+                                    <Track.DecreaseRepeatButton>
+                                        <RepeatButton Command="{x:Static Slider.DecreaseLarge}"
+                                                      Style="{StaticResource SliderRepeatButtonStyle}"/>
+                                    </Track.DecreaseRepeatButton>
+                                    <Track.IncreaseRepeatButton>
+                                        <RepeatButton Command="{x:Static Slider.IncreaseLarge}"
+                                                      Style="{StaticResource SliderRepeatButtonStyle}"/>
+                                    </Track.IncreaseRepeatButton>
+                                    <Track.Thumb>
+                                        <Thumb x:Name="Thumb" Background="Black" Style="{StaticResource CustomThumbForSlider}"/>
+                                    </Track.Thumb>
+                                </Track>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
     </UserControl.Resources>
     <Grid>
         <Border Name="RangeBorder"
@@ -67,9 +140,23 @@
                 BorderBrush="Gray"
                 VerticalAlignment="Center"
                 Height="2"
-                Margin="5,0,5,0"
-                />
-        <Slider Name="TimeLine" Minimum="0" Background="Black"
+                Margin="5,0,5,0" />
+        <!--<Slider Name="TimeLine" Minimum="0" 
+                Maximum="{Binding MaxValue, ElementName=_self}"
+                Value="{Binding CurrentValue, UpdateSourceTrigger=PropertyChanged, ElementName=_self}"
+                TickPlacement="BottomRight" 
+                TickFrequency="5" 
+                AutoToolTipPlacement="TopLeft"
+                VerticalAlignment="Center"
+                AutoToolTipPrecision="3"
+                IsMoveToPointEnabled="True"
+                IsSelectionRangeEnabled="True"
+                Style="{StaticResource MyCustomStyleForSlider}"
+                MinHeight="3"
+                SelectionStart="{Binding ElementName=_self, Path=SelectionStart}"
+                SelectionEnd="{Binding ElementName=_self, Path=SelectionEnd}"
+                ToolTip="{Binding ElementName=_self, Path=CurrentTimeSpan}"/>-->
+        <Slider Name="TimeLine" Minimum="0" 
                 Maximum="{Binding MaxValue, ElementName=_self}"
                 Value="{Binding CurrentValue, UpdateSourceTrigger=PropertyChanged, ElementName=_self}"
                 TickPlacement="BottomRight" 
@@ -82,6 +169,6 @@
                 Template="{StaticResource MainSliderTemplate}"
                 SelectionStart="{Binding ElementName=_self, Path=SelectionStart}"
                 SelectionEnd="{Binding ElementName=_self, Path=SelectionEnd}"
-        />
-        </Grid>
+                ToolTip="{Binding ElementName=_self, Path=CurrentTimeSpan}"/>
+    </Grid>
 </UserControl>
