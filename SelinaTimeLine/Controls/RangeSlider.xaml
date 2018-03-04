@@ -15,27 +15,9 @@
                         <Thumb x:Name="Thumb">
                             <Thumb.Template>
                                 <ControlTemplate TargetType="Thumb">
-                                    <!--<Rectangle Fill="GreenYellow"
-                                           Stroke="Black"
-                                           StrokeThickness="1"
-                                           Width="10"
-                                           Height="18"
-                                           SnapsToDevicePixels="True"/>-->
                                     <Canvas>
-                                        <!--<Line X1="0" Y1="0"
-                                              X2="0" Y2="22"
-                                              Stroke="Green"
-                                              StrokeThickness="5"/>
-                                        <Line X1="-1" Y1="2"
-                                              X2="6" Y2="2"
-                                              Stroke="Green"
-                                              StrokeThickness="4"/>
-                                        <Line X1="-1" Y1="20"
-                                              X2="6" Y2="20"
-                                              Stroke="Green"
-                                              StrokeThickness="4"/>-->
                                         <Path Stroke="Green"
-                                              StrokeThickness="4"
+                                              StrokeThickness="7"
                                               Data="M 6,0 H 0 V 20 H 6"/>
                                     </Canvas>
                                 </ControlTemplate>
@@ -52,28 +34,10 @@
                         <Thumb x:Name="Thumb">
                             <Thumb.Template>
                                 <ControlTemplate TargetType="Thumb">
-                                    <!--<Rectangle Fill="GreenYellow"
-                                           Stroke="Black"
-                                           StrokeThickness="1"
-                                           Width="10"
-                                           Height="18"
-                                           SnapsToDevicePixels="True"/>-->
-                                    <Canvas>
-                                        <!--<Line X1="6" Y1="0"
-                                              X2="6" Y2="22"
-                                              Stroke="Green"
-                                              StrokeThickness="5"/>
-                                        <Line X1="-1" Y1="2"
-                                              X2="6" Y2="2"
-                                              Stroke="Green"
-                                              StrokeThickness="4"/>
-                                        <Line X1="-1" Y1="20"
-                                              X2="6" Y2="20"
-                                              Stroke="Green"
-                                              StrokeThickness="4"/>-->
-                                        <Path Stroke="Green"
-                                              StrokeThickness="4"
-                                              Data="M 0,0 H 6 V 20 H 0"/>
+                                    <Canvas Margin="-6,-1">
+                                        <Path Stroke="Blue"
+                                              StrokeThickness="1"
+                                              Data="M 0,0 V 20"/>
                                     </Canvas>
                                 </ControlTemplate>
                             </Thumb.Template>
@@ -81,6 +45,7 @@
                     </Track.Thumb>
                 </Track>
             </Grid>
+
         </ControlTemplate>
     </UserControl.Resources>
     <Grid VerticalAlignment="Top">
@@ -102,14 +67,12 @@
                 Maximum="{Binding ElementName=root, Path=Maximum}"
                 Value="{Binding ElementName=root, Path=LowerValue, Mode=TwoWay}"
                 Template="{StaticResource RangeLowerValueTemplate}"
-                Margin="0,0,0,0"
                 AutoToolTipPlacement="TopLeft"/>
         <Slider x:Name="UpperSlider"
                 Minimum="{Binding ElementName=root, Path=Minimum}"
                 Maximum="{Binding ElementName=root, Path=Maximum}"
                 Value="{Binding ElementName=root, Path=UpperValue, Mode=TwoWay}"
                 Template="{StaticResource RangeUpperValueTemplate}"
-                Margin="0,0,0,0"
                 AutoToolTipPlacement="TopLeft"/>
     </Grid>
 </UserControl>

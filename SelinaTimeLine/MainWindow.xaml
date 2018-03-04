@@ -31,8 +31,9 @@
             <controls:TimeLineSlider Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MaxValue="{Binding MaxValue}" 
                                      MaxTimeSpan="{Binding MaxTimeSpan}"
                                      CurrentTimeSpan="{Binding CurrentTimeSpan, Mode=TwoWay}"
-                                     SelectionStart="{Binding ElementName=MainRangeSlider, Path=LowerValue, Mode=TwoWay}"
-                                     SelectionEnd="{Binding ElementName=MainRangeSlider, Path=UpperValue, Mode=TwoWay}"/>
+                                     SelectionStart="{Binding LowerValue}"
+                                     SelectionEnd="{Binding UpperValue}"
+                                     />
 
             <controls:RangeSlider x:Name="MainRangeSlider" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                   Minimum="{Binding Minimum}"
@@ -69,13 +70,15 @@
                     AutoToolTipPrecision="3"
                     IsMoveToPointEnabled="True"
                     IsSelectionRangeEnabled="True"
-                    SelectionStart="10"
-                    SelectionEnd="50" />
+                    SelectionStart="{Binding LowerValue}"
+                    SelectionEnd="{Binding UpperValue}"
+                    />
                     
-            <!--<controls:RangeSlider x:Name="RangeSlider" Minimum="{Binding Minimum}" 
+            <!--<controls:RangeSlider Grid.Column="0" x:Name="RangeSlider" Minimum="{Binding Minimum}" 
                                   Maximum="{Binding MaxValue}" 
                                   LowerValue="{Binding LowerValue, Mode=TwoWay}"
-                                  UpperValue="{Binding UpperValue, Mode=TwoWay}"/>-->
+                                  UpperValue="{Binding UpperValue, Mode=TwoWay}"
+                                  />-->
             
             <Button Grid.Column="1" Visibility="{Binding LiveControlVisibility}">
                 <StackPanel Orientation="Horizontal" Width="50">
