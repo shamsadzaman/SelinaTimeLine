@@ -15,7 +15,8 @@
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="1" Visibility="{Binding IsLiveStreaming, ElementName=_self, Converter={converters:BoolToVisibilityConverter}}" Width="45">
+        <Button Grid.Column="1" Visibility="{Binding IsLiveStreaming, ElementName=_self, Converter={converters:BoolToVisibilityConverter}}" 
+                Width="45" IsEnabled="{Binding ElementName=_self, Path=IsLiveRightNow, Converter={converters:InverseBoolConverter}}">
             <StackPanel Orientation="Horizontal">
                 <Rectangle RadiusX="4" RadiusY="4" Height="5" Width="5" Fill="Red" 
                            VerticalAlignment="Center"
