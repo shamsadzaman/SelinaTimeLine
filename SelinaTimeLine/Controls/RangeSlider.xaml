@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <ControlTemplate x:Key="RangeLowerValueTemplate" TargetType="{x:Type Slider}">
             <Grid>
-                <Track x:Name="PART_Track" Grid.Row="1">
+                <Track x:Name="PART_Track">
                     <Track.Thumb>
                         <Thumb x:Name="Thumb">
                             <Thumb.Template>
@@ -22,7 +22,7 @@
                                            Height="18"
                                            SnapsToDevicePixels="True"/>-->
                                     <Canvas>
-                                        <Line X1="0" Y1="0"
+                                        <!--<Line X1="0" Y1="0"
                                               X2="0" Y2="22"
                                               Stroke="Green"
                                               StrokeThickness="5"/>
@@ -33,7 +33,10 @@
                                         <Line X1="-1" Y1="20"
                                               X2="6" Y2="20"
                                               Stroke="Green"
-                                              StrokeThickness="4"/>
+                                              StrokeThickness="4"/>-->
+                                        <Path Stroke="Green"
+                                              StrokeThickness="4"
+                                              Data="M 6,0 H 0 V 20 H 6"/>
                                     </Canvas>
                                 </ControlTemplate>
                             </Thumb.Template>
@@ -44,7 +47,7 @@
         </ControlTemplate>
         <ControlTemplate x:Key="RangeUpperValueTemplate" TargetType="{x:Type Slider}">
             <Grid>
-                <Track x:Name="PART_Track" Grid.Row="1">
+                <Track x:Name="PART_Track">
                     <Track.Thumb>
                         <Thumb x:Name="Thumb">
                             <Thumb.Template>
@@ -56,7 +59,7 @@
                                            Height="18"
                                            SnapsToDevicePixels="True"/>-->
                                     <Canvas>
-                                        <Line X1="6" Y1="0"
+                                        <!--<Line X1="6" Y1="0"
                                               X2="6" Y2="22"
                                               Stroke="Green"
                                               StrokeThickness="5"/>
@@ -67,7 +70,10 @@
                                         <Line X1="-1" Y1="20"
                                               X2="6" Y2="20"
                                               Stroke="Green"
-                                              StrokeThickness="4"/>
+                                              StrokeThickness="4"/>-->
+                                        <Path Stroke="Green"
+                                              StrokeThickness="4"
+                                              Data="M 0,0 H 6 V 20 H 0"/>
                                     </Canvas>
                                 </ControlTemplate>
                             </Thumb.Template>
