@@ -20,8 +20,8 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="125"/>
             </Grid.ColumnDefinitions>
             <ToggleButton Name="LiveButton" Height="20">Show Live Button</ToggleButton>

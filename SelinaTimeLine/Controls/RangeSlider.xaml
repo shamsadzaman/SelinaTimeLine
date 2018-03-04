@@ -23,17 +23,17 @@
                                            SnapsToDevicePixels="True"/>-->
                                     <Canvas>
                                         <Line X1="0" Y1="0"
-                                              X2="0" Y2="10"
+                                              X2="0" Y2="22"
                                               Stroke="Green"
-                                              StrokeThickness="2"/>
-                                        <Line X1="-1" Y1="0"
-                                              X2="3" Y2="0"
+                                              StrokeThickness="5"/>
+                                        <Line X1="-1" Y1="2"
+                                              X2="6" Y2="2"
                                               Stroke="Green"
-                                              StrokeThickness="2"/>
-                                        <Line X1="-1" Y1="10"
-                                              X2="3" Y2="10"
+                                              StrokeThickness="4"/>
+                                        <Line X1="-1" Y1="20"
+                                              X2="6" Y2="20"
                                               Stroke="Green"
-                                              StrokeThickness="2"/>
+                                              StrokeThickness="4"/>
                                     </Canvas>
                                 </ControlTemplate>
                             </Thumb.Template>
@@ -56,18 +56,18 @@
                                            Height="18"
                                            SnapsToDevicePixels="True"/>-->
                                     <Canvas>
-                                        <Line X1="2" Y1="0"
-                                              X2="2" Y2="10"
+                                        <Line X1="6" Y1="0"
+                                              X2="6" Y2="22"
                                               Stroke="Green"
-                                              StrokeThickness="2"/>
-                                        <Line X1="-1" Y1="0"
-                                              X2="3" Y2="0"
+                                              StrokeThickness="5"/>
+                                        <Line X1="-1" Y1="2"
+                                              X2="6" Y2="2"
                                               Stroke="Green"
-                                              StrokeThickness="2"/>
-                                        <Line X1="-1" Y1="10"
-                                              X2="3" Y2="10"
+                                              StrokeThickness="4"/>
+                                        <Line X1="-1" Y1="20"
+                                              X2="6" Y2="20"
                                               Stroke="Green"
-                                              StrokeThickness="2"/>
+                                              StrokeThickness="4"/>
                                     </Canvas>
                                 </ControlTemplate>
                             </Thumb.Template>
@@ -96,14 +96,14 @@
                 Maximum="{Binding ElementName=root, Path=Maximum}"
                 Value="{Binding ElementName=root, Path=LowerValue, Mode=TwoWay}"
                 Template="{StaticResource RangeLowerValueTemplate}"
-                Margin="0,0,10,0"
+                Margin="0,0,0,0"
                 AutoToolTipPlacement="TopLeft"/>
         <Slider x:Name="UpperSlider"
                 Minimum="{Binding ElementName=root, Path=Minimum}"
                 Maximum="{Binding ElementName=root, Path=Maximum}"
                 Value="{Binding ElementName=root, Path=UpperValue, Mode=TwoWay}"
                 Template="{StaticResource RangeUpperValueTemplate}"
-                Margin="10,0,0,0"
+                Margin="0,0,0,0"
                 AutoToolTipPlacement="TopLeft"/>
     </Grid>
 </UserControl>
