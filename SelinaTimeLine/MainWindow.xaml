@@ -36,14 +36,14 @@
                                      SelectionEnd="{Binding UpperValue}"
                                      />
 
-            <!--<controls:RangeSlider x:Name="MainRangeSlider" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+            <controls:RangeSlider x:Name="MainRangeSlider" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                   Minimum="{Binding Minimum}"
                                   Maximum="{Binding MaxValue}" 
                                   LowerValue="{Binding LowerValue, Mode=TwoWay}"
                                   UpperValue="{Binding UpperValue, Mode=TwoWay}"
                                   Visibility="{Binding ElementName=ShowRangeSlider, 
                                     Path=IsChecked, 
-                                    Converter={converters:BoolToVisibilityConverter}}"/>-->
+                                    Converter={converters:BoolToVisibilityConverter}}"/>
             
             <controls:TimeDisplay Grid.Row="1" Grid.Column="2"
                                   CurrentTimeSpan="{Binding CurrentTimeSpan, Mode=TwoWay}"
@@ -74,11 +74,11 @@
                     SelectionStart="{Binding LowerValue}"
                     SelectionEnd="{Binding UpperValue}"
                     />
-            <controls:RangeSlider Grid.Column="0" x:Name="RangeSlider" Minimum="{Binding Minimum}" 
+            <!--<controls:RangeSlider Grid.Column="0" x:Name="RangeSlider" Minimum="{Binding Minimum}" 
                                   Maximum="{Binding MaxValue}" 
                                   LowerValue="{Binding LowerValue, Mode=TwoWay}"
                                   UpperValue="{Binding UpperValue, Mode=TwoWay}"
-                                  />
+                                  />-->
             
             <Button Grid.Column="1" Visibility="{Binding LiveControlVisibility}">
                 <StackPanel Orientation="Horizontal" Width="50">

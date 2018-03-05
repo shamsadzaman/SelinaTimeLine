@@ -42,16 +42,16 @@
                         <Thumb x:Name="Thumb">
                             <Thumb.Template>
                                 <ControlTemplate TargetType="Thumb">
-                                    <!--<Ellipse Fill="Orange" 
+                                    <Ellipse Fill="Orange" 
                                              Stroke="Black"
                                              StrokeThickness="1"
                                              Width="15"
                                              Height="15"
-                                             SnapsToDevicePixels="True" />-->
-                                    <Rectangle Width="5"
+                                             SnapsToDevicePixels="True" />
+                                    <!--<Rectangle Width="5"
                                                Height="20"
                                                Fill="Orange"
-                                               SnapsToDevicePixels="True"/>
+                                               SnapsToDevicePixels="True"/>-->
                                 </ControlTemplate>
                             </Thumb.Template>
                         </Thumb>
