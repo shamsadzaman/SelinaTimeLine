@@ -26,7 +26,9 @@
             </Grid.ColumnDefinitions>
             <ToggleButton Name="LiveButton" Height="20">Show Live Button</ToggleButton>
             <ToggleButton Grid.Row="0" Grid.Column="1" Name="LiveRightNow" Height="20">Live Right now</ToggleButton>
-            <ToggleButton Grid.Row="0" Grid.Column="2" Name="ShowRangeSlider" Height="20">Show Range Slider</ToggleButton>
+            <ToggleButton Grid.Row="0" Grid.Column="2" Name="ShowRangeSlider" 
+                          Height="20" 
+                          IsChecked="{Binding IsRangeVisisble}">Show Range Slider</ToggleButton>
 
             <controls:TimeLineSlider x:Name="TimeLineSlider" 
                                      Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MaxValue="{Binding MaxValue}" 

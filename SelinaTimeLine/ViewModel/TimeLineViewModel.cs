@@ -16,6 +16,7 @@ namespace SelinaTimeLine.ViewModel
         private bool _isLiveStreaming;
         private double _lowerValue;
         private double _upperValue;
+        private bool _isRangeVisisble;
 
         public double MaxValue
         {
@@ -161,6 +162,31 @@ namespace SelinaTimeLine.ViewModel
 
                 _upperValue = value;
                 RaisePropertyChanged();
+            }
+        }
+
+        public bool IsRangeVisisble
+        {
+            get => _isRangeVisisble;
+            set
+            {
+                if (_isRangeVisisble == value)
+                {
+                    return;
+                }
+
+                _isRangeVisisble = value;
+                SetRangeValue(value);
+                RaisePropertyChanged();
+            }
+        }
+
+        private void SetRangeValue(bool isRangeVisible)
+        {
+            if (!isRangeVisible)
+            {
+                LowerValue = 0;
+                UpperValue = 0;
             }
         }
 
