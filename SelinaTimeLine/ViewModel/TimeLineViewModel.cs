@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Documents;
 using GalaSoft.MvvmLight;
+using SelinaTimeLine.Models;
 
 namespace SelinaTimeLine.ViewModel
 {
@@ -199,7 +202,43 @@ namespace SelinaTimeLine.ViewModel
 
             CurrentValue = 30;
             IsLiveStreaming = false;
+
+            EventMarkers = new List<EventMarker>
+            {
+                new EventMarker
+                {
+                    FromTime = new TimeSpan(0, 10, 30),
+                    ToTime = new TimeSpan(0, 15, 30),
+                    Name = "Marker 1"
+                },
+                new EventMarker
+                {
+                    FromTime = new TimeSpan(1, 10, 30),
+                    ToTime = new TimeSpan(1, 15, 30),
+                    Name = "Marker 2"
+                },
+                new EventMarker
+                {
+                    FromTime = new TimeSpan(0, 12, 30),
+                    ToTime = new TimeSpan(0, 20, 30),
+                    Name = "Marker 3"
+                },
+                new EventMarker
+                {
+                    FromTime = new TimeSpan(0, 15, 00),
+                    ToTime = new TimeSpan(0, 16, 30),
+                    Name = "Marker 4"
+                },
+                new EventMarker
+                {
+                    FromTime = new TimeSpan(0, 17, 30),
+                    ToTime = new TimeSpan(0, 19, 30),
+                    Name = "Marker 1"
+                }
+            };
         }
+
+        public List<EventMarker> EventMarkers { get; set; }
 
         //public double ConvertTimeSpanToSliderValue(TimeSpan timeSpan)
         //{

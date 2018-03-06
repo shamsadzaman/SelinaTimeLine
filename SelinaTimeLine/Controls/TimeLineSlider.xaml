@@ -63,10 +63,9 @@
                 </Track>
             </Grid>
         </ControlTemplate>
-
-        
         
     </UserControl.Resources>
+    
     <Grid>
         <Border Name="RangeBorder"
                 BorderThickness="0,1,0,0"
