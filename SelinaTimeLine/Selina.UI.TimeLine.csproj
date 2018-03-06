@@ -79,6 +79,7 @@
     <Compile Include="Controls\TimeLineSlider.xaml.cs">
       <DependentUpon>TimeLineSlider.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TimeLineTickBar.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\InverseBoolConverter.cs" />
     <Compile Include="Converters\InverseBoolToVisibilityConverter.cs" />

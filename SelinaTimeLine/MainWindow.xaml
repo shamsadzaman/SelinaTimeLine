@@ -8,7 +8,8 @@
         xmlns:controls="clr-namespace:SelinaTimeLine.Controls"
         xmlns:converters="clr-namespace:SelinaTimeLine.Converters"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        x:Name="_self">
     <Window.DataContext>
         <viewModel:TimeLineViewModel />
     </Window.DataContext>
@@ -36,6 +37,7 @@
                                      CurrentTimeSpan="{Binding CurrentTimeSpan, Mode=TwoWay}"
                                      SelectionStart="{Binding LowerValue}"
                                      SelectionEnd="{Binding UpperValue}"
+                                     EventMarkers="{Binding EventMarkers}"
                                      />
 
             <controls:RangeSlider x:Name="MainRangeSlider" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
@@ -110,6 +112,8 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -147,6 +151,12 @@
 
             <TextBlock Grid.Row="8" Grid.Column="0">Current value 2</TextBlock>
             <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding CurrentValue}" />
+
+            <TextBlock Grid.Row="9" Grid.Column="0">Slider Width</TextBlock>
+            <TextBlock Grid.Row="9" Grid.Column="1" Text="{Binding ElementName=TimeLine, Path=ActualWidth}" />
+
+            <TextBlock Grid.Row="10" Grid.Column="0">Window Width</TextBlock>
+            <TextBlock Grid.Row="10" Grid.Column="1" Text="{Binding ElementName=_self, Path=ActualWidth}" />
         </Grid>
     </StackPanel>
 </Window>

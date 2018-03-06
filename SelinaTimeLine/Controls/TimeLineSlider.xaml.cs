@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using SelinaTimeLine.Models;
 
 namespace SelinaTimeLine.Controls
 {
@@ -25,6 +27,7 @@ namespace SelinaTimeLine.Controls
         public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
         public static readonly DependencyProperty SelectionStartProperty = DependencyProperty.Register("SelectionStart", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
         public static readonly DependencyProperty SelectionEndProperty = DependencyProperty.Register("SelectionEnd", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
+        public static readonly DependencyProperty EventMarkersProperty = DependencyProperty.Register("EventMarkers", typeof(List<EventMarker>), typeof(TimeLineSlider), new PropertyMetadata(default(List<EventMarker>)));
 
         public bool IsLiveStreaming
         {
@@ -83,6 +86,12 @@ namespace SelinaTimeLine.Controls
         {
             get { return (double) GetValue(SelectionEndProperty); }
             set { SetValue(SelectionEndProperty, value); }
+        }
+
+        public List<EventMarker> EventMarkers
+        {
+            get { return (List<EventMarker>) GetValue(EventMarkersProperty); }
+            set { SetValue(EventMarkersProperty, value); }
         }
 
         public TimeLineSlider()
