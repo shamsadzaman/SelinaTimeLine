@@ -32,9 +32,9 @@
                           IsChecked="{Binding IsRangeVisisble}">Show Range Slider</ToggleButton>
 
             <controls:TimeLineSlider x:Name="TimeLineSlider" 
-                                     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MaxValue="{Binding MaxValue}" 
-                                     MaxTimeSpan="{Binding MaxTimeSpan}"
-                                     CurrentTimeSpan="{Binding CurrentTimeSpan, Mode=TwoWay}"
+                                     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                                     MaxValue="{Binding MaxValue}" 
+                                     CurrentValue="{Binding CurrentTimeValue, Mode=TwoWay}"
                                      SelectionStart="{Binding LowerValue}"
                                      SelectionEnd="{Binding UpperValue}"
                                      EventMarkers="{Binding EventMarkers}"
@@ -120,7 +120,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <TextBlock Text="MaxValue" />
-            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding MaxValue}" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding MaxValue}" />
             
             <TextBlock Grid.Row="1" Grid.Column="0" Text="MaxHour" />
             <Slider Grid.Row="1" Grid.Column="1" Maximum="12" 

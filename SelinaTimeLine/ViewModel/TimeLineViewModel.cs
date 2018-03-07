@@ -21,20 +21,9 @@ namespace SelinaTimeLine.ViewModel
         private double _upperValue;
         private bool _isRangeVisisble;
 
-        public double MaxValue
-        {
-            get => _maxValue;
-            set
-            {
-                if (Math.Abs(_maxValue - value) < .0000001)
-                {
-                    return;
-                }
+        public const double Tolerance = 0.00000001;
 
-                _maxValue = value;
-                RaisePropertyChanged();
-            }
-        }
+        #region Debug Stuff
 
         public double CurrentValue
         {
@@ -51,39 +40,6 @@ namespace SelinaTimeLine.ViewModel
 
                 RaisePropertyChanged();
                 RaisePropertyChanged(() => CurrentTimeSpan);
-            }
-        }
-
-        public TimeSpan MaxTimeSpan
-        {
-            get => _maxTimeSpan;
-            set
-            {
-                if (_maxTimeSpan == value)
-                {
-                    return;
-                }
-
-                _maxTimeSpan = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public TimeSpan CurrentTimeSpan
-        {
-            get => _currentTimeSpan;
-            set
-            {
-                if (_currentTimeSpan == value)
-                {
-                    return;
-                }
-
-                _currentTimeSpan = value;
-                //_currentValue = ConvertTimeSpanToSliderValue(_currentTimeSpan);
-
-                RaisePropertyChanged();
-                //RaisePropertyChanged(() => CurrentValue);
             }
         }
 
@@ -121,6 +77,48 @@ namespace SelinaTimeLine.ViewModel
 
         public Visibility TimeMarkerVisibility => IsLiveStreaming ? Visibility.Collapsed : Visibility.Visible;
 
+        #endregion
+
+        public double MaxValue => MaxTimeSpan.TotalMilliseconds;
+
+        public double CurrentTimeValue
+        {
+            get => _currentTimeSpan.TotalMilliseconds;
+            set
+            {
+                var t = TimeSpan.FromMilliseconds(value);
+
+                if (_currentTimeSpan == t)
+                {
+                    return;
+                }
+
+                _currentTimeSpan = t;
+
+                RaisePropertyChanged();
+                RaisePropertyChanged(() => CurrentTimeSpan);
+            }
+        }
+
+
+        public TimeSpan MaxTimeSpan
+        {
+            get => _maxTimeSpan;
+            set
+            {
+                if (_maxTimeSpan == value)
+                {
+                    return;
+                }
+
+                _maxTimeSpan = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public TimeSpan CurrentTimeSpan => _currentTimeSpan;
+
+
         public bool IsLiveStreaming
         {
             get => _isLiveStreaming;
@@ -135,8 +133,6 @@ namespace SelinaTimeLine.ViewModel
                 RaisePropertyChanged();
             }
         }
-
-        public double Minimum => 0;
 
         public double LowerValue
         {
@@ -193,11 +189,10 @@ namespace SelinaTimeLine.ViewModel
             }
         }
 
-        public const double Tolerance = 0.00000001;
 
         public TimeLineViewModel()
         {
-            MaxValue = 200;
+            //MaxValue = 200;
             MaxTimeSpan = new TimeSpan(0, 15, 30);
 
             CurrentValue = 30;
