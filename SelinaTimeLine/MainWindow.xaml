@@ -41,7 +41,7 @@
                                      />
 
             <controls:RangeSlider x:Name="MainRangeSlider" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                                  Minimum="{Binding Minimum}"
+                                  Minimum="{Binding MinValue}"
                                   Maximum="{Binding MaxValue}" 
                                   LowerValue="{Binding LowerValue, Mode=TwoWay}"
                                   UpperValue="{Binding UpperValue, Mode=TwoWay}"
@@ -50,7 +50,7 @@
                                     Converter={converters:BoolToVisibilityConverter}}"/>
             
             <controls:TimeDisplay Grid.Row="1" Grid.Column="2"
-                                  CurrentTimeSpan="{Binding CurrentTimeSpan, Mode=TwoWay}"
+                                  CurrentTimeSpan="{Binding CurrentTimeSpan}"
                                   MaxTimeSpan="{Binding MaxTimeSpan}"
                                   IsLiveStreaming="{Binding ElementName=LiveButton, 
                                         Path=IsChecked}"

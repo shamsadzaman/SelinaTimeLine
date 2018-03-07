@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Documents;
 using GalaSoft.MvvmLight;
 using SelinaTimeLine.Models;
 
@@ -22,7 +21,8 @@ namespace SelinaTimeLine.ViewModel
 
         public const double Tolerance = 0.00000001;
 
-        public double MaxValue => MaxTimeSpan.TotalMilliseconds;
+
+        public TimeSpan CurrentTimeSpan => _currentTimeSpan;
 
         public double CurrentTimeValue
         {
@@ -43,23 +43,7 @@ namespace SelinaTimeLine.ViewModel
             }
         }
 
-
-        public TimeSpan MaxTimeSpan
-        {
-            get => _maxTimeSpan;
-            set
-            {
-                if (_maxTimeSpan == value)
-                {
-                    return;
-                }
-
-                _maxTimeSpan = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public TimeSpan CurrentTimeSpan => _currentTimeSpan;
+        public List<EventMarker> EventMarkers { get; set; }
 
         public bool IsLiveStreaming
         {
@@ -76,36 +60,10 @@ namespace SelinaTimeLine.ViewModel
             }
         }
 
-        public double LowerValue
-        {
-            get => _lowerValue;
-            set
-            {
-                if (Math.Abs(_lowerValue - value) < .00000001)
-                {
-                    return;
-                }
-
-                _lowerValue = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public double UpperValue
-        {
-            get => _upperValue;
-            set
-            {
-                if (Math.Abs(_upperValue - value) < Tolerance)
-                {
-                    return;
-                }
-
-                _upperValue = value;
-                RaisePropertyChanged();
-            }
-        }
-
+        /// <summary>
+        /// Connected to toggle button to show/hide range slider
+        /// and reset Selected Range
+        /// </summary>
         public bool IsRangeVisisble
         {
             get => _isRangeVisisble;
@@ -122,6 +80,58 @@ namespace SelinaTimeLine.ViewModel
             }
         }
 
+
+        public double LowerValue
+        {
+            get => _lowerValue;
+            set
+            {
+                if (Math.Abs(_lowerValue - value) < .00000001)
+                {
+                    return;
+                }
+
+                _lowerValue = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        public TimeSpan MaxTimeSpan
+        {
+            get => _maxTimeSpan;
+            set
+            {
+                if (_maxTimeSpan == value)
+                {
+                    return;
+                }
+
+                _maxTimeSpan = value;
+                RaisePropertyChanged();
+                RaisePropertyChanged(() => MaxValue);
+            }
+        }
+
+        public double MaxValue => MaxTimeSpan.TotalMilliseconds;
+
+        public double MinValue => 0;
+
+        public double UpperValue
+        {
+            get => _upperValue;
+            set
+            {
+                if (Math.Abs(_upperValue - value) < Tolerance)
+                {
+                    return;
+                }
+
+                _upperValue = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private void SetRangeValue(bool isRangeVisible)
         {
             if (!isRangeVisible)
@@ -130,7 +140,6 @@ namespace SelinaTimeLine.ViewModel
                 UpperValue = 0;
             }
         }
-
 
         public TimeLineViewModel()
         {
@@ -170,12 +179,10 @@ namespace SelinaTimeLine.ViewModel
                 {
                     FromTime = new TimeSpan(0, 17, 30),
                     ToTime = new TimeSpan(0, 19, 30),
-                    Name = "Marker 1"
+                    Name = "Marker 5"
                 }
             };
         }
-
-        public List<EventMarker> EventMarkers { get; set; }
 
         //public double ConvertTimeSpanToSliderValue(TimeSpan timeSpan)
         //{
