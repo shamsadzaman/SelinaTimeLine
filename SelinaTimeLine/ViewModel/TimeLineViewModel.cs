@@ -144,7 +144,7 @@ namespace SelinaTimeLine.ViewModel
         public TimeLineViewModel()
         {
             //MaxValue = 200;
-            MaxTimeSpan = new TimeSpan(0, 15, 30);
+            MaxTimeSpan = new TimeSpan(3, 15, 30);
 
             CurrentValue = 30;
             IsLiveStreaming = false;
