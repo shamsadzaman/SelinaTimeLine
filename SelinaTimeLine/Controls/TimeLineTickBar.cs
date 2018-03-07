@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
+using SelinaTimeLine.Models;
 
 namespace SelinaTimeLine.Controls
 {
     public class TimeLineTickBar : TickBar
     {
+        public static readonly DependencyProperty EventMarkersProperty = DependencyProperty.Register("EventMarkers", typeof(List<EventMarker>), typeof(TimeLineTickBar), new PropertyMetadata(default(List<EventMarker>)));
+
         protected override void OnRender(DrawingContext dc)
         {
             //base.OnRender(dc);
@@ -20,7 +24,7 @@ namespace SelinaTimeLine.Controls
             // the slider line
             var xPerValue = (ActualWidth - (xMargin * 2)) / Maximum;
 
-            var value = 200;
+            var value = 000;
 
             var xPosition = xPerValue * value;
 
@@ -53,6 +57,12 @@ namespace SelinaTimeLine.Controls
             };
 
             dc.DrawGeometry(new SolidColorBrush(Colors.Red), new Pen(new SolidColorBrush(Colors.Red), 1), geo);
+        }
+
+        public List<EventMarker> EventMarkers
+        {
+            get => (List<EventMarker>) GetValue(EventMarkersProperty);
+            set => SetValue(EventMarkersProperty, value);
         }
     }
 }

@@ -75,6 +75,8 @@
                 </TickBar>-->
                 <Border BorderBrush="Green" BorderThickness="1" Grid.Row="2">
                     <controls:TimeLineTickBar Height="20"
+                                              EventMarkers="{Binding ElementName=_self,
+                                                Path=EventMarkers}"
                                               />
                 </Border>
             </Grid>

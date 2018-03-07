@@ -78,20 +78,20 @@ namespace SelinaTimeLine.Controls
 
         public double SelectionStart
         {
-            get { return (double) GetValue(SelectionStartProperty); }
-            set { SetValue(SelectionStartProperty, value); }
+            get => (double) GetValue(SelectionStartProperty);
+            set => SetValue(SelectionStartProperty, value);
         }
 
         public double SelectionEnd
         {
-            get { return (double) GetValue(SelectionEndProperty); }
-            set { SetValue(SelectionEndProperty, value); }
+            get => (double) GetValue(SelectionEndProperty);
+            set => SetValue(SelectionEndProperty, value);
         }
 
         public List<EventMarker> EventMarkers
         {
-            get { return (List<EventMarker>) GetValue(EventMarkersProperty); }
-            set { SetValue(EventMarkersProperty, value); }
+            get => (List<EventMarker>) GetValue(EventMarkersProperty);
+            set => SetValue(EventMarkersProperty, value);
         }
 
         public TimeLineSlider()
