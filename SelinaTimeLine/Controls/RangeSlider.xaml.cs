@@ -13,12 +13,6 @@ namespace SelinaTimeLine.Controls
         {
             InitializeComponent();
             Loaded += RangeSlider_Loaded;
-            LayoutUpdated += OnLayoutUpdated;
-        }
-
-        private void OnLayoutUpdated(object sender, EventArgs eventArgs)
-        {
-            //SetProgressBorder();
         }
 
         public double Minimum
@@ -66,22 +60,11 @@ namespace SelinaTimeLine.Controls
         private void LowerSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             UpperSlider.Value = Math.Max(UpperSlider.Value, LowerSlider.Value);
-            //SetProgressBorder();
         }
 
         private void UpperSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             LowerSlider.Value = Math.Min(UpperSlider.Value, LowerSlider.Value);
-            //SetProgressBorder();
         }
-
-        //private void SetProgressBorder()
-        //{
-        //    var lowerPoint = (this.ActualWidth * (LowerValue - Minimum)) / (Maximum - Minimum);
-        //    var upperPoint = (this.ActualWidth * (UpperValue - Minimum)) / (Maximum - Minimum);
-        //    upperPoint = this.ActualWidth - upperPoint;
-        //    RangeBorder.Margin = new Thickness(lowerPoint, 0, upperPoint, 0);
-        //    //RangeBorder.Width = upperPoint;
-        //}
     }
 }
