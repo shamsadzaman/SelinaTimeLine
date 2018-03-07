@@ -21,7 +21,7 @@ namespace SelinaTimeLine.Controls
             }
 
             var xMargin = 6;
-            var yMargin = 3;
+            var yMargin = -7;
 
             // subtract margin from left/right side to get the width of
             // the slider line
@@ -38,7 +38,7 @@ namespace SelinaTimeLine.Controls
                     continue;
                 }
 
-                var xPosition = xPerValue * eventMarker.FromTime.TotalMilliseconds ;
+                var xPosition = xPerValue * eventMarker.FromTime.TotalMilliseconds;
 
                 Console.WriteLine("(ActualWidth - (xMargin * 2)): " + (ActualWidth - (xMargin * 2)));
                 Console.WriteLine("eventMarker.FromTime.Milliseconds / Maximum" + eventMarker.FromTime.TotalMilliseconds );
@@ -79,7 +79,7 @@ namespace SelinaTimeLine.Controls
                 }
             };
 
-            dc.DrawGeometry(new SolidColorBrush(Colors.Red), new Pen(new SolidColorBrush(Colors.Red), 1), geo);
+            dc.DrawGeometry(new SolidColorBrush(Colors.Red), new Pen(new SolidColorBrush(Colors.DarkRed), 1), geo);
         }
 
         public List<EventMarker> EventMarkers

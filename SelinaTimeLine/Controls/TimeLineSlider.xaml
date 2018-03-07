@@ -73,7 +73,7 @@
                          Placement="Bottom"
                          Ticks="2, 4, 5, 10, 50">
                 </TickBar>-->
-                <controls:TimeLineTickBar Grid.Row="2" Height="20" 
+                <controls:TimeLineTickBar Grid.Row="2"
                                           EventMarkers="{Binding ElementName=_self, Path=EventMarkers}"
                                           />
             </Grid>
@@ -82,12 +82,12 @@
     </UserControl.Resources>
     
     <Grid>
-        <!--<Border Name="RangeBorder"
+        <Border Name="RangeBorder"
                 BorderThickness="0,1,0,0"
                 BorderBrush="Green"
                 VerticalAlignment="Center"
                 Height="2"
-                Margin="5,0,5,0" />-->
+                Margin="5,0,5,0" />
         <!--<Slider Name="TimeLine" Minimum="0" 
                 Maximum="{Binding MaxValue, ElementName=_self}"
                 Value="{Binding CurrentValue, UpdateSourceTrigger=PropertyChanged, ElementName=_self}"
