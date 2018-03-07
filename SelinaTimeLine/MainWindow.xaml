@@ -115,6 +115,8 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -158,6 +160,12 @@
 
             <TextBlock Grid.Row="10" Grid.Column="0">Window Width</TextBlock>
             <TextBlock Grid.Row="10" Grid.Column="1" Text="{Binding ElementName=_self, Path=ActualWidth}" />
+
+            <TextBlock Grid.Row="11" Grid.Column="0">Lower Time Span</TextBlock>
+            <TextBlock Grid.Row="11" Grid.Column="1" Text="{Binding LowerTimeSpan}" />
+
+            <TextBlock Grid.Row="12" Grid.Column="0">Upper Time Span</TextBlock>
+            <TextBlock Grid.Row="12" Grid.Column="1" Text="{Binding UpperTimeSpan}" />
         </Grid>
     </StackPanel>
 </Window>

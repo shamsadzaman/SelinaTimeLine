@@ -51,7 +51,7 @@ namespace SelinaTimeLine.Controls
         public static readonly DependencyProperty MaximumProperty =
             DependencyProperty.Register("Maximum", typeof(double), typeof(RangeSlider), new UIPropertyMetadata(1d));
 
-        void RangeSlider_Loaded(object sender, RoutedEventArgs e)
+        private void RangeSlider_Loaded(object sender, RoutedEventArgs e)
         {
             LowerSlider.ValueChanged += LowerSlider_ValueChanged;
             UpperSlider.ValueChanged += UpperSlider_ValueChanged;

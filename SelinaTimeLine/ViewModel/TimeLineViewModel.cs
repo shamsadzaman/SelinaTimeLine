@@ -93,6 +93,7 @@ namespace SelinaTimeLine.ViewModel
 
                 _lowerValue = value;
                 RaisePropertyChanged();
+                RaisePropertyChanged(() => LowerTimeSpan);
             }
         }
 
@@ -129,6 +130,7 @@ namespace SelinaTimeLine.ViewModel
 
                 _upperValue = value;
                 RaisePropertyChanged();
+                RaisePropertyChanged(() => UpperTimeSpan);
             }
         }
 
@@ -213,6 +215,8 @@ namespace SelinaTimeLine.ViewModel
             }
         }
 
+        public TimeSpan LowerTimeSpan => TimeSpan.FromMilliseconds(LowerValue);
+
         public int MaxHour
         {
             get => _maxHour;
@@ -242,6 +246,8 @@ namespace SelinaTimeLine.ViewModel
                 InitializeMaxTimeSpan();
             }
         }
+
+        public TimeSpan UpperTimeSpan => TimeSpan.FromMilliseconds(UpperValue);
 
         public Visibility LiveControlVisibility => IsLiveStreaming ? Visibility.Visible : Visibility.Collapsed;
 
