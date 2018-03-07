@@ -15,7 +15,10 @@ namespace SelinaTimeLine.Controls
         {
             //base.OnRender(dc);
 
-            //dc.DrawLine(new Pen(new SolidColorBrush(Colors.Red), 20), new Point(6, 0), new Point(6, 15));
+            if (EventMarkers == null)
+            {
+                return;
+            }
 
             var xMargin = 6;
             var yMargin = 3;
@@ -24,11 +27,7 @@ namespace SelinaTimeLine.Controls
             // the slider line
             var xPerValue = (ActualWidth - (xMargin * 2)) / Maximum;
 
-            //var value = 000;
-
-            //var xPosition = xPerValue * value;
-
-            Console.WriteLine("xPosition: " + xPerValue);
+            Console.WriteLine("xPerValue: " + xPerValue);
 
 
             foreach (var eventMarker in EventMarkers)
@@ -51,6 +50,7 @@ namespace SelinaTimeLine.Controls
 
         private static void DrawEventMarker(DrawingContext dc, int xMargin, double xPosition, int yMargin)
         {
+            //todo: Get the drawing/icon from EventMarker
             var geo = new PathGeometry
             {
                 Figures = new PathFigureCollection
