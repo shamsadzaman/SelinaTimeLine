@@ -15,69 +15,12 @@ namespace SelinaTimeLine.ViewModel
         private int _maxMinute;
         private int _maxHour;
         private TimeSpan _maxTimeSpan;
-        private double _maxValue;
         private bool _isLiveStreaming;
         private double _lowerValue;
         private double _upperValue;
         private bool _isRangeVisisble;
 
         public const double Tolerance = 0.00000001;
-
-        #region Debug Stuff
-
-        public double CurrentValue
-        {
-            get => _currentValue;
-            set
-            {
-                if (Math.Abs(_currentValue - value) < .000001)
-                {
-                    return;
-                }
-
-                _currentValue = value;
-                _currentTimeSpan = ConvertSliderValueToTimeSpan(_currentValue);
-
-                RaisePropertyChanged();
-                RaisePropertyChanged(() => CurrentTimeSpan);
-            }
-        }
-
-        public int MaxHour
-        {
-            get => _maxHour;
-            set
-            {
-                _maxHour = value;
-                InitializeMaxTimeSpan();
-            }
-        }
-
-        public int MaxMinute
-        {
-            get => _maxMinute;
-            set
-            {
-                _maxMinute = value;
-                InitializeMaxTimeSpan();
-            }
-        }
-
-        public int MaxSecond
-        {
-            get => _maxSecond;
-            set
-            {
-                _maxSecond = value;
-                InitializeMaxTimeSpan();
-            }
-        }
-
-        public Visibility LiveControlVisibility => IsLiveStreaming ? Visibility.Visible : Visibility.Collapsed;
-
-        public Visibility TimeMarkerVisibility => IsLiveStreaming ? Visibility.Collapsed : Visibility.Visible;
-
-        #endregion
 
         public double MaxValue => MaxTimeSpan.TotalMilliseconds;
 
@@ -117,7 +60,6 @@ namespace SelinaTimeLine.ViewModel
         }
 
         public TimeSpan CurrentTimeSpan => _currentTimeSpan;
-
 
         public bool IsLiveStreaming
         {
@@ -244,6 +186,60 @@ namespace SelinaTimeLine.ViewModel
         //    return sliderValue;
         //}
 
+        #region Debug Stuff
+
+        public double CurrentValue
+        {
+            get => _currentValue;
+            set
+            {
+                if (Math.Abs(_currentValue - value) < .000001)
+                {
+                    return;
+                }
+
+                _currentValue = value;
+                _currentTimeSpan = ConvertSliderValueToTimeSpan(_currentValue);
+
+                RaisePropertyChanged();
+                RaisePropertyChanged(() => CurrentTimeSpan);
+            }
+        }
+
+        public int MaxHour
+        {
+            get => _maxHour;
+            set
+            {
+                _maxHour = value;
+                InitializeMaxTimeSpan();
+            }
+        }
+
+        public int MaxMinute
+        {
+            get => _maxMinute;
+            set
+            {
+                _maxMinute = value;
+                InitializeMaxTimeSpan();
+            }
+        }
+
+        public int MaxSecond
+        {
+            get => _maxSecond;
+            set
+            {
+                _maxSecond = value;
+                InitializeMaxTimeSpan();
+            }
+        }
+
+        public Visibility LiveControlVisibility => IsLiveStreaming ? Visibility.Visible : Visibility.Collapsed;
+
+        public Visibility TimeMarkerVisibility => IsLiveStreaming ? Visibility.Collapsed : Visibility.Visible;
+
         public TimeSpan ConvertSliderValueToTimeSpan(double sliderValue)
         {
             var tickPerSliderValue = MaxTimeSpan.Ticks / MaxValue;
@@ -259,5 +255,7 @@ namespace SelinaTimeLine.ViewModel
         {
             MaxTimeSpan = new TimeSpan(MaxHour, MaxMinute, MaxSecond);
         }
+
+        #endregion
     }
 }
