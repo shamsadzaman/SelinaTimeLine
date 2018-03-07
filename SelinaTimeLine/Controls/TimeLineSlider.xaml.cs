@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using SelinaTimeLine.Models;
 
 namespace SelinaTimeLine.Controls
 {
@@ -16,12 +18,16 @@ namespace SelinaTimeLine.Controls
         public static readonly DependencyProperty MaxTimeSpanProperty = DependencyProperty.Register("MaxTimeSpan", typeof(TimeSpan), typeof(TimeLineSlider), new PropertyMetadata(new TimeSpan(2, 15, 0)));
         //public static readonly DependencyProperty LiveControlVisibilityProperty = DependencyProperty.Register("LiveControlVisibility", typeof(Visibility), typeof(TimeLineSlider), new PropertyMetadata(default(Visibility)));
         public static readonly DependencyProperty MaxValueProperty = DependencyProperty.Register("MaxValue", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
-        public static readonly DependencyProperty CurrentValueProperty = DependencyProperty.Register("CurrentValue", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double), CurrentValueChangedCallback));
+        public static readonly DependencyProperty CurrentValueProperty = DependencyProperty.Register("CurrentValue", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
 
         public static readonly DependencyProperty IsLiveStreamingProperty = DependencyProperty.Register(
             "IsLiveStreaming", typeof(bool), typeof(TimeLineSlider), new PropertyMetadata(default(bool)));
 
         public static readonly DependencyProperty IsLiveRightNowProperty = DependencyProperty.Register("IsLiveRightNow", typeof(bool), typeof(TimeLineSlider), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
+        public static readonly DependencyProperty SelectionStartProperty = DependencyProperty.Register("SelectionStart", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
+        public static readonly DependencyProperty SelectionEndProperty = DependencyProperty.Register("SelectionEnd", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
+        public static readonly DependencyProperty EventMarkersProperty = DependencyProperty.Register("EventMarkers", typeof(List<EventMarker>), typeof(TimeLineSlider), new PropertyMetadata(default(List<EventMarker>)));
 
         public bool IsLiveStreaming
         {
@@ -64,6 +70,30 @@ namespace SelinaTimeLine.Controls
             set => SetValue(IsLiveRightNowProperty, value);
         }
 
+        public double Minimum
+        {
+            get => (double) GetValue(MinimumProperty);
+            set => SetValue(MinimumProperty, value);
+        }
+
+        public double SelectionStart
+        {
+            get => (double) GetValue(SelectionStartProperty);
+            set => SetValue(SelectionStartProperty, value);
+        }
+
+        public double SelectionEnd
+        {
+            get => (double) GetValue(SelectionEndProperty);
+            set => SetValue(SelectionEndProperty, value);
+        }
+
+        public List<EventMarker> EventMarkers
+        {
+            get => (List<EventMarker>) GetValue(EventMarkersProperty);
+            set => SetValue(EventMarkersProperty, value);
+        }
+
         public TimeLineSlider()
         {
             InitializeComponent();
@@ -78,29 +108,29 @@ namespace SelinaTimeLine.Controls
         //    return sliderValue;
         //}
 
-        public TimeSpan ConvertSliderValueToTimeSpan(double sliderValue)
-        {
-            var tickPerSliderValue = MaxTimeSpan.Ticks / MaxValue;
+        //public TimeSpan ConvertSliderValueToTimeSpan(double sliderValue)
+        //{
+        //    var tickPerSliderValue = MaxTimeSpan.Ticks / MaxValue;
 
-            var timeSpanTicks = tickPerSliderValue * sliderValue;
+        //    var timeSpanTicks = tickPerSliderValue * sliderValue;
 
-            var timeSpan = new TimeSpan((long)timeSpanTicks);
+        //    var timeSpan = new TimeSpan((long)timeSpanTicks);
 
-            return timeSpan;
-        }
+        //    return timeSpan;
+        //}
 
-        private static void CurrentValueChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            //var timeSpan = ConvertSliderValueToTimeSpan((double)dependencyObject.GetValue(CurrentValueProperty));
-            //SetValue(CurrentTimeSpanProperty, timeSpan);
-            var slider = dependencyObject as TimeLineSlider;
+        //private static void CurrentValueChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        //{
+        //    //var timeSpan = ConvertSliderValueToTimeSpan((double)dependencyObject.GetValue(CurrentValueProperty));
+        //    //SetValue(CurrentTimeSpanProperty, timeSpan);
+        //    var slider = dependencyObject as TimeLineSlider;
 
-            slider?.SetCurrntTimespan(slider.CurrentValue);
-        }
+        //    slider?.SetCurrntTimespan(slider.CurrentValue);
+        //}
 
-        private void SetCurrntTimespan(double sliderCurrentValue)
-        {
-            CurrentTimeSpan = ConvertSliderValueToTimeSpan(sliderCurrentValue);
-        }
+        //private void SetCurrntTimespan(double sliderCurrentValue)
+        //{
+        //    CurrentTimeSpan = ConvertSliderValueToTimeSpan(sliderCurrentValue);
+        //}
     }
 }

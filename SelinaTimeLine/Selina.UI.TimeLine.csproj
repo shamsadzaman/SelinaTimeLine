@@ -70,26 +70,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\MainSlider.xaml.cs">
-      <DependentUpon>MainSlider.xaml</DependentUpon>
+    <Compile Include="Controls\RangeSlider.xaml.cs">
+      <DependentUpon>RangeSlider.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\RangeSelectionSlider.xaml.cs">
-      <DependentUpon>RangeSelectionSlider.xaml</DependentUpon>
+    <Compile Include="Controls\TimeDisplay.xaml.cs">
+      <DependentUpon>TimeDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TimeLineSlider.xaml.cs">
       <DependentUpon>TimeLineSlider.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TimeLineTickBar.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\InverseBoolConverter.cs" />
     <Compile Include="Converters\InverseBoolToVisibilityConverter.cs" />
+    <Compile Include="Models\EventMarker.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\TimeLineViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Page Include="Controls\MainSlider.xaml">
+    <Page Include="Controls\RangeSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\RangeSelectionSlider.xaml">
+    <Page Include="Controls\TimeDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
