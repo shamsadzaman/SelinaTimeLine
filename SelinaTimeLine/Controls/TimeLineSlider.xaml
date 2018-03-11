@@ -138,7 +138,7 @@
                 AutoToolTipPrecision="3"
                 IsMoveToPointEnabled="True"
                 IsSelectionRangeEnabled="True"
-                Height="50"
+                Height="{Binding ElementName=_self, Path=Height}"
                 Template="{StaticResource MainSliderTemplate}"
                 SelectionStart="{Binding ElementName=_self, Path=SelectionStart}"
                 SelectionEnd="{Binding ElementName=_self, Path=SelectionEnd}"
