@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SelinaTimeLine.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
-             Name="root">
+             Name="_self">
     <UserControl.Resources>
         <ControlTemplate x:Key="RangeLowerValueTemplate" TargetType="{x:Type Slider}">
             <Border SnapsToDevicePixels="true"
@@ -18,7 +18,8 @@
                         <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Track x:Name="PART_Track" Margin="6 0" Grid.Row="1">
+                    <Track x:Name="PART_Track" Margin="6 15" Grid.Row="1"
+                           Height="{TemplateBinding Height}">
                         <Track.Thumb>
                             <Thumb x:Name="Thumb">
                                 <Thumb.Template>
@@ -48,7 +49,8 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     
-                    <Track x:Name="PART_Track" Grid.Row="1" Margin="6 0">
+                    <Track x:Name="PART_Track" Grid.Row="1" Margin="6 15" 
+                           Height="{TemplateBinding Height}">
                         <Track.Thumb>
                             <Thumb x:Name="Thumb">
                                 <Thumb.Template>
@@ -85,17 +87,19 @@
                    Height="5"/>-->
 
         <Slider x:Name="LowerSlider"
-                Minimum="{Binding ElementName=root, Path=Minimum}"
-                Maximum="{Binding ElementName=root, Path=Maximum}"
-                Value="{Binding ElementName=root, Path=LowerValue, Mode=TwoWay}"
+                Minimum="{Binding ElementName=_self, Path=Minimum}"
+                Maximum="{Binding ElementName=_self, Path=Maximum}"
+                Value="{Binding ElementName=_self, Path=LowerValue, Mode=TwoWay}"
                 Template="{StaticResource RangeLowerValueTemplate}"
+                Height="{Binding ElementName=_self, Path=Height}"
                 AutoToolTipPlacement="TopLeft"/>
         <Slider x:Name="UpperSlider"
-                Minimum="{Binding ElementName=root, Path=Minimum}"
-                Maximum="{Binding ElementName=root, Path=Maximum}"
-                Value="{Binding ElementName=root, Path=UpperValue, Mode=TwoWay}"
+                Minimum="{Binding ElementName=_self, Path=Minimum}"
+                Maximum="{Binding ElementName=_self, Path=Maximum}"
+                Value="{Binding ElementName=_self, Path=UpperValue, Mode=TwoWay}"
                 Template="{StaticResource RangeUpperValueTemplate}"
                 AutoToolTipPlacement="TopLeft"
-                BorderBrush="Aqua" />
+                Height="{Binding ElementName=_self, Path=Height}"
+                />
     </Grid>
 </UserControl>

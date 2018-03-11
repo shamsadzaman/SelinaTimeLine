@@ -38,6 +38,7 @@
                                      SelectionStart="{Binding LowerValue}"
                                      SelectionEnd="{Binding UpperValue}"
                                      EventMarkers="{Binding EventMarkers}"
+                                     Height="50"
                                      />
 
             <controls:RangeSlider x:Name="MainRangeSlider" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
@@ -45,9 +46,11 @@
                                   Maximum="{Binding MaxValue}" 
                                   LowerValue="{Binding LowerValue, Mode=TwoWay}"
                                   UpperValue="{Binding UpperValue, Mode=TwoWay}"
-                                  Visibility="{Binding ElementName=ShowRangeSlider, 
-                                    Path=IsChecked, 
-                                    Converter={converters:BoolToVisibilityConverter}}"/>
+                                  Visibility="{Binding ElementName=ShowRangeSlider,
+                                    Path=IsChecked,
+                                    Converter={converters:BoolToVisibilityConverter}}"
+                                  Height="50"
+                                  />
             
             <controls:TimeDisplay Grid.Row="1" Grid.Column="2"
                                   CurrentTimeSpan="{Binding CurrentTimeSpan}"
