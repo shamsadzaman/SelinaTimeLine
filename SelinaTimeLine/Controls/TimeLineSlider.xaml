@@ -12,7 +12,8 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Rectangle Height="30" Fill="Transparent" />
+                        <Rectangle Height="{TemplateBinding Height}"
+                                   Fill="{TemplateBinding Foreground}" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -21,7 +22,8 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Rectangle Height="30" Fill="Transparent" />
+                        <Rectangle Height="{TemplateBinding Height}"
+                                   Fill="{TemplateBinding Foreground}" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -43,58 +45,64 @@
                   Fill="Red"/>
         </Canvas>
         <ControlTemplate x:Key="MainSliderTemplate" TargetType="{x:Type Slider}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Canvas VerticalAlignment="Center" Grid.Row="1">
-                    <Rectangle x:Name="PART_SelectionRange" 
+            <Border BorderThickness="1" BorderBrush="Gray">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Canvas VerticalAlignment="Center" Grid.Row="1">
+                        <Rectangle x:Name="PART_SelectionRange" 
                                Height="5"
                                Fill="Green"
                                Opacity=".5"/>
-                </Canvas>
-                <controls:TimeLineTickBar Grid.Row="2"
+                    </Canvas>
+                    <controls:TimeLineTickBar Grid.Row="2"
                                           EventMarkers="{Binding ElementName=_self, Path=EventMarkers}"
                                           Goal="{StaticResource GoalEventMarker}"
                                           Foul="{StaticResource FoulEventMarker}"/>
-                <Track x:Name="PART_Track" Grid.Row="1">
-                    <Track.DecreaseRepeatButton>
-                        <RepeatButton Command="{x:Static Slider.DecreaseLarge}"
-                                  Style="{StaticResource DecreaseRepeatButton}"/>
-                    </Track.DecreaseRepeatButton>
-                    <Track.Thumb>
-                        <Thumb x:Name="Thumb">
-                            <Thumb.Template>
-                                <ControlTemplate TargetType="Thumb">
-                                    <Ellipse Fill="Orange" 
+                    <Track x:Name="PART_Track" Grid.Row="1" Height="{TemplateBinding Height}">
+                        <Track.DecreaseRepeatButton>
+                            <RepeatButton Command="{x:Static Slider.DecreaseLarge}"
+                                      Style="{StaticResource DecreaseRepeatButton}"
+                                      Height="{TemplateBinding Height}"
+                                      Foreground="Transparent"/>
+                        </Track.DecreaseRepeatButton>
+                        <Track.Thumb>
+                            <Thumb x:Name="Thumb">
+                                <Thumb.Template>
+                                    <ControlTemplate TargetType="Thumb">
+                                        <Ellipse Fill="Orange" 
                                              Stroke="Black"
                                              StrokeThickness="1"
                                              Width="15"
                                              Height="15"
                                              SnapsToDevicePixels="True" />
-                                    <!--<Rectangle Width="5"
+                                        <!--<Rectangle Width="5"
                                                Height="20"
                                                Fill="Orange"
                                                SnapsToDevicePixels="True"/>-->
-                                </ControlTemplate>
-                            </Thumb.Template>
-                        </Thumb>
-                    </Track.Thumb>
-                    <Track.IncreaseRepeatButton>
-                        <RepeatButton Command="{x:Static Slider.IncreaseLarge}"
-                                      Style="{StaticResource IncreaseRepeatButton}"/>
-                    </Track.IncreaseRepeatButton>
-                </Track>
-                <!--<TickBar Grid.Row="2"
+                                    </ControlTemplate>
+                                </Thumb.Template>
+                            </Thumb>
+                        </Track.Thumb>
+                        <Track.IncreaseRepeatButton>
+                            <RepeatButton Command="{x:Static Slider.IncreaseLarge}"
+                                      Style="{StaticResource IncreaseRepeatButton}"
+                                      Height="{TemplateBinding Height}"
+                                      Foreground="Transparent"/>
+                        </Track.IncreaseRepeatButton>
+                    </Track>
+                    <!--<TickBar Grid.Row="2"
                          Fill="Green"
                          Height="10"
                          Placement="Bottom"
                          Ticks="2, 4, 5, 10, 50">
                 </TickBar>-->
-                
-            </Grid>
+
+                </Grid>
+            </Border>
         </ControlTemplate>
         
         
@@ -125,13 +133,12 @@
         <Slider Name="TimeLine" Minimum="0" 
                 Maximum="{Binding MaxValue, ElementName=_self}"
                 Value="{Binding CurrentValue, UpdateSourceTrigger=PropertyChanged, ElementName=_self}"
-                TickPlacement="BottomRight" 
-                TickFrequency="5" 
                 AutoToolTipPlacement="TopLeft"
                 VerticalAlignment="Center"
                 AutoToolTipPrecision="3"
                 IsMoveToPointEnabled="True"
                 IsSelectionRangeEnabled="True"
+                Height="50"
                 Template="{StaticResource MainSliderTemplate}"
                 SelectionStart="{Binding ElementName=_self, Path=SelectionStart}"
                 SelectionEnd="{Binding ElementName=_self, Path=SelectionEnd}"
