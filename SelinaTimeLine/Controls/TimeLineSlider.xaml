@@ -39,6 +39,8 @@
                                Fill="Green"
                                Opacity=".5"/>
                 </Canvas>
+                <controls:TimeLineTickBar Grid.Row="2"
+                                          EventMarkers="{Binding ElementName=_self, Path=EventMarkers}" />
                 <Track x:Name="PART_Track" Grid.Row="1">
                     <Track.DecreaseRepeatButton>
                         <RepeatButton Command="{x:Static Slider.DecreaseLarge}"
@@ -73,9 +75,7 @@
                          Placement="Bottom"
                          Ticks="2, 4, 5, 10, 50">
                 </TickBar>-->
-                <controls:TimeLineTickBar Grid.Row="2"
-                                          EventMarkers="{Binding ElementName=_self, Path=EventMarkers}"
-                                          />
+                
             </Grid>
         </ControlTemplate>
         

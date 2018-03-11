@@ -157,31 +157,36 @@ namespace SelinaTimeLine.ViewModel
                 {
                     FromTime = new TimeSpan(0, 10, 30),
                     ToTime = new TimeSpan(0, 15, 30),
-                    Name = "Marker 1"
+                    Name = "Marker 1",
+                    EventType = EventType.Goal
                 },
                 new EventMarker
                 {
                     FromTime = new TimeSpan(1, 10, 30),
                     ToTime = new TimeSpan(1, 15, 30),
-                    Name = "Marker 2"
+                    Name = "Marker 2",
+                    EventType = EventType.Goal
                 },
                 new EventMarker
                 {
                     FromTime = new TimeSpan(0, 12, 30),
                     ToTime = new TimeSpan(0, 20, 30),
-                    Name = "Marker 3"
+                    Name = "Marker 3",
+                    EventType = EventType.Foul
                 },
                 new EventMarker
                 {
                     FromTime = new TimeSpan(0, 15, 00),
                     ToTime = new TimeSpan(0, 16, 30),
-                    Name = "Marker 4"
+                    Name = "Marker 4",
+                    EventType = EventType.Foul
                 },
                 new EventMarker
                 {
                     FromTime = new TimeSpan(0, 17, 30),
                     ToTime = new TimeSpan(0, 19, 30),
-                    Name = "Marker 5"
+                    Name = "Marker 5",
+                    EventType = EventType.Goal
                 }
             };
         }
@@ -270,5 +275,11 @@ namespace SelinaTimeLine.ViewModel
         }
 
         #endregion
+    }
+
+    public enum EventType
+    {
+        Goal,
+        Foul
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Media;
+using SelinaTimeLine.ViewModel;
 
 namespace SelinaTimeLine.Models
 {
@@ -12,5 +13,7 @@ namespace SelinaTimeLine.Models
         public TimeSpan FromTime { get; set; }
 
         public TimeSpan ToTime { get; set; }
+
+        public EventType EventType { get; set; }
     }
 }

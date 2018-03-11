@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using SelinaTimeLine.Models;
+using SelinaTimeLine.ViewModel;
 
 namespace SelinaTimeLine.Controls
 {
@@ -44,15 +45,16 @@ namespace SelinaTimeLine.Controls
                 Console.WriteLine("eventMarker.FromTime.Milliseconds / Maximum" + eventMarker.FromTime.TotalMilliseconds );
                 Console.WriteLine("xPosition: " + xPosition);
 
-                DrawEventMarker(dc, xMargin, xPosition, yMargin);
+                DrawEventMarker(dc, xMargin, xPosition, yMargin, eventMarker.EventType);
             }
         }
 
-        private static void DrawEventMarker(DrawingContext dc, int xMargin, double xPosition, int yMargin)
+        private static void DrawEventMarker(DrawingContext dc, int xMargin, double xPosition, int yMargin, EventType eventType)
         {
             //todo: Get the drawing/icon from EventMarker
             var geo = new PathGeometry
             {
+                FillRule = FillRule.Nonzero,
                 Figures = new PathFigureCollection
                 {
                     new PathFigure
@@ -79,7 +81,11 @@ namespace SelinaTimeLine.Controls
                 }
             };
 
-            dc.DrawGeometry(new SolidColorBrush(Colors.Red), new Pen(new SolidColorBrush(Colors.DarkRed), 1), geo);
+            var fillColor = eventType == EventType.Foul ? Colors.Red : Colors.Blue;
+            var borderColor = eventType == EventType.Foul ? Colors.DarkRed : Colors.DarkBlue;
+
+
+            dc.DrawGeometry(new SolidColorBrush(fillColor), new Pen(new SolidColorBrush(borderColor), 1), geo);
         }
 
         public List<EventMarker> EventMarkers
