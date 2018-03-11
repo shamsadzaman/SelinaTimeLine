@@ -43,7 +43,7 @@ namespace SelinaTimeLine.ViewModel
             }
         }
 
-        public List<EventMarker> EventMarkers { get; set; }
+        public List<PenaltyMarker> EventMarkers { get; set; }
 
         public bool IsLiveStreaming
         {
@@ -151,42 +151,32 @@ namespace SelinaTimeLine.ViewModel
             CurrentValue = 30;
             IsLiveStreaming = false;
 
-            EventMarkers = new List<EventMarker>
+            EventMarkers = new List<PenaltyMarker>
             {
-                new EventMarker
+                new PenaltyMarker
                 {
-                    FromTime = new TimeSpan(0, 10, 30),
-                    ToTime = new TimeSpan(0, 15, 30),
+                    MarkerPosition = new TimeSpan(0, 10, 30),
                     Name = "Marker 1",
-                    EventType = EventType.Goal
                 },
-                new EventMarker
+                new PenaltyMarker
                 {
-                    FromTime = new TimeSpan(1, 10, 30),
-                    ToTime = new TimeSpan(1, 15, 30),
+                    MarkerPosition = new TimeSpan(1, 10, 30),
                     Name = "Marker 2",
-                    EventType = EventType.Goal
                 },
-                new EventMarker
+                new PenaltyMarker
                 {
-                    FromTime = new TimeSpan(0, 12, 30),
-                    ToTime = new TimeSpan(0, 20, 30),
+                    MarkerPosition = new TimeSpan(0, 12, 30),
                     Name = "Marker 3",
-                    EventType = EventType.Foul
                 },
-                new EventMarker
+                new PenaltyMarker
                 {
-                    FromTime = new TimeSpan(0, 15, 00),
-                    ToTime = new TimeSpan(0, 16, 30),
+                    MarkerPosition = new TimeSpan(0, 15, 00),
                     Name = "Marker 4",
-                    EventType = EventType.Foul
                 },
-                new EventMarker
+                new PenaltyMarker
                 {
-                    FromTime = new TimeSpan(0, 17, 30),
-                    ToTime = new TimeSpan(0, 19, 30),
+                    MarkerPosition = new TimeSpan(0, 17, 30),
                     Name = "Marker 5",
-                    EventType = EventType.Goal
                 }
             };
         }

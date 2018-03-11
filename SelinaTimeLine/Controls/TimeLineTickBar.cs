@@ -14,7 +14,7 @@ namespace SelinaTimeLine.Controls
         private const int XMargin = 6;
         private const int YMargin = -26;
 
-        public static readonly DependencyProperty EventMarkersProperty = DependencyProperty.Register("EventMarkers", typeof(List<EventMarker>), typeof(TimeLineTickBar), new PropertyMetadata(default(List<EventMarker>)));
+        public static readonly DependencyProperty EventMarkersProperty = DependencyProperty.Register("EventMarkers", typeof(List<PenaltyMarker>), typeof(TimeLineTickBar), new PropertyMetadata(default(List<PenaltyMarker>)));
         public static readonly DependencyProperty GoalProperty = DependencyProperty.Register("Goal", typeof(Canvas), typeof(TimeLineTickBar), new PropertyMetadata(default(Canvas), GPropertyChangedCallback));
 
         private static void GPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
@@ -35,9 +35,9 @@ namespace SelinaTimeLine.Controls
             }
         }
 
-        public List<EventMarker> EventMarkers
+        public List<PenaltyMarker> EventMarkers
         {
-            get => (List<EventMarker>)GetValue(EventMarkersProperty);
+            get => (List<PenaltyMarker>)GetValue(EventMarkersProperty);
             set => SetValue(EventMarkersProperty, value);
         }
 
@@ -105,23 +105,23 @@ namespace SelinaTimeLine.Controls
 
             foreach (var eventMarker in EventMarkers)
             {
-                if (eventMarker.FromTime.TotalMilliseconds > Maximum)
+                if (eventMarker.MarkerPosition.TotalMilliseconds > Maximum)
                 {
                     // ignore marker that's out of max range
                     continue;
                 }
 
-                var xPosition = xPerValue * eventMarker.FromTime.TotalMilliseconds;
+                var xPosition = xPerValue * eventMarker.MarkerPosition.TotalMilliseconds;
 
                 Console.WriteLine("(ActualWidth - (xMargin * 2)): " + (ActualWidth - (XMargin * 2)));
-                Console.WriteLine("eventMarker.FromTime.Milliseconds / Maximum" + eventMarker.FromTime.TotalMilliseconds );
+                Console.WriteLine("eventMarker.MarkerPosition.Milliseconds / Maximum" + eventMarker.MarkerPosition.TotalMilliseconds );
                 Console.WriteLine("xPosition: " + xPosition);
 
-                DrawEventMarker(dc, XMargin, xPosition, YMargin, eventMarker.EventType);
+                DrawEventMarker(dc, XMargin, xPosition, YMargin, eventMarker);
             }
         }
 
-        private static void DrawEventMarker(DrawingContext dc, int xMargin, double xPosition, int yMargin, EventType eventType)
+        private static void DrawEventMarker(DrawingContext dc, int xMargin, double xPosition, int yMargin, IMarker type)
         {
             //todo: Get the drawing/icon from EventMarker
             //var geo = new PathGeometry
@@ -159,7 +159,7 @@ namespace SelinaTimeLine.Controls
 
             //dc.DrawGeometry(new SolidColorBrush(fillColor), new Pen(new SolidColorBrush(borderColor), 1), geo);
 
-            var markerDrawing = eventType == EventType.Foul ? FoulEventMarker : GoalEventMarker;
+            var markerDrawing = type is PenaltyMarker ? FoulEventMarker : GoalEventMarker;
 
             if (markerDrawing == null)
             {

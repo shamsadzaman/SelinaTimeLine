@@ -27,7 +27,7 @@ namespace SelinaTimeLine.Controls
         public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
         public static readonly DependencyProperty SelectionStartProperty = DependencyProperty.Register("SelectionStart", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
         public static readonly DependencyProperty SelectionEndProperty = DependencyProperty.Register("SelectionEnd", typeof(double), typeof(TimeLineSlider), new PropertyMetadata(default(double)));
-        public static readonly DependencyProperty EventMarkersProperty = DependencyProperty.Register("EventMarkers", typeof(List<EventMarker>), typeof(TimeLineSlider), new PropertyMetadata(default(List<EventMarker>)));
+        public static readonly DependencyProperty EventMarkersProperty = DependencyProperty.Register("EventMarkers", typeof(List<PenaltyMarker>), typeof(TimeLineSlider), new PropertyMetadata(default(List<PenaltyMarker>)));
 
         public bool IsLiveStreaming
         {
@@ -88,9 +88,9 @@ namespace SelinaTimeLine.Controls
             set => SetValue(SelectionEndProperty, value);
         }
 
-        public List<EventMarker> EventMarkers
+        public List<PenaltyMarker> EventMarkers
         {
-            get => (List<EventMarker>) GetValue(EventMarkersProperty);
+            get => (List<PenaltyMarker>) GetValue(EventMarkersProperty);
             set => SetValue(EventMarkersProperty, value);
         }
 
