@@ -43,7 +43,7 @@ namespace SelinaTimeLine.ViewModel
             }
         }
 
-        public List<PenaltyMarker> EventMarkers { get; set; }
+        public List<IMarker> EventMarkers { get; set; }
 
         public bool IsLiveStreaming
         {
@@ -151,14 +151,14 @@ namespace SelinaTimeLine.ViewModel
             CurrentValue = 30;
             IsLiveStreaming = false;
 
-            EventMarkers = new List<PenaltyMarker>
+            EventMarkers = new List<IMarker>
             {
                 new PenaltyMarker
                 {
                     MarkerPosition = new TimeSpan(0, 10, 30),
                     Name = "Marker 1",
                 },
-                new PenaltyMarker
+                new GoalMarker
                 {
                     MarkerPosition = new TimeSpan(1, 10, 30),
                     Name = "Marker 2",
@@ -168,7 +168,7 @@ namespace SelinaTimeLine.ViewModel
                     MarkerPosition = new TimeSpan(0, 12, 30),
                     Name = "Marker 3",
                 },
-                new PenaltyMarker
+                new GoalMarker
                 {
                     MarkerPosition = new TimeSpan(0, 15, 00),
                     Name = "Marker 4",

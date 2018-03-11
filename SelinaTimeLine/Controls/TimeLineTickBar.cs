@@ -14,7 +14,7 @@ namespace SelinaTimeLine.Controls
         private const int XMargin = 6;
         private const int YMargin = -26;
 
-        public static readonly DependencyProperty EventMarkersProperty = DependencyProperty.Register("EventMarkers", typeof(List<PenaltyMarker>), typeof(TimeLineTickBar), new PropertyMetadata(default(List<PenaltyMarker>)));
+        public static readonly DependencyProperty EventMarkersProperty = DependencyProperty.Register("EventMarkers", typeof(List<IMarker>), typeof(TimeLineTickBar), new PropertyMetadata(default(List<IMarker>)));
         public static readonly DependencyProperty GoalProperty = DependencyProperty.Register("Goal", typeof(Canvas), typeof(TimeLineTickBar), new PropertyMetadata(default(Canvas), GPropertyChangedCallback));
 
         private static void GPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
@@ -35,9 +35,9 @@ namespace SelinaTimeLine.Controls
             }
         }
 
-        public List<PenaltyMarker> EventMarkers
+        public List<IMarker> EventMarkers
         {
-            get => (List<PenaltyMarker>)GetValue(EventMarkersProperty);
+            get => (List<IMarker>)GetValue(EventMarkersProperty);
             set => SetValue(EventMarkersProperty, value);
         }
 
