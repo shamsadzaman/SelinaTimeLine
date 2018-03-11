@@ -164,7 +164,7 @@ namespace SelinaTimeLine.Controls
                 return;
             }
 
-            var rect = new Rect(xPosition, yMargin, markerDrawing.Width, markerDrawing.Height);
+            var rect = new Rect(xPosition + xMargin, yMargin, markerDrawing.Width, markerDrawing.Height);
             dc.DrawImage(markerDrawing, rect);
         }
     }
