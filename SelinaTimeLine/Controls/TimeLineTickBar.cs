@@ -5,7 +5,6 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using SelinaTimeLine.Models;
-using SelinaTimeLine.ViewModel;
 
 namespace SelinaTimeLine.Controls
 {
@@ -21,17 +20,17 @@ namespace SelinaTimeLine.Controls
         {
             if (dependencyObject is TimeLineTickBar d)
             {
-                GoalEventMarker = GetDrawingImageFrom(d.Goal);
+                GoalMarkerIcon = GetDrawingImageFrom(d.Goal);
             }
         }
 
-        public static readonly DependencyProperty FoulProperty = DependencyProperty.Register("Foul", typeof(Canvas), typeof(TimeLineTickBar), new PropertyMetadata(default(Canvas), FPropertyChangedCallback));
+        public static readonly DependencyProperty PenaltyProperty = DependencyProperty.Register("Penalty", typeof(Canvas), typeof(TimeLineTickBar), new PropertyMetadata(default(Canvas), FPropertyChangedCallback));
 
         private static void FPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
             if (dependencyObject is TimeLineTickBar d)
             {
-                FoulEventMarker = GetDrawingImageFrom(d.Foul);
+                PenaltyMarkerIcon = GetDrawingImageFrom(d.Penalty);
             }
         }
 
@@ -41,20 +40,21 @@ namespace SelinaTimeLine.Controls
             set => SetValue(EventMarkersProperty, value);
         }
 
-        private static DrawingImage FoulEventMarker { get; set; }
+        //todo: rename foul to penalty
+        private static DrawingImage PenaltyMarkerIcon { get; set; }
 
-        private static DrawingImage GoalEventMarker { get; set; }
+        private static DrawingImage GoalMarkerIcon { get; set; }
 
         public Canvas Goal
         {
-            get { return (Canvas) GetValue(GoalProperty); }
-            set { SetValue(GoalProperty, value); }
+            get => (Canvas) GetValue(GoalProperty);
+            set => SetValue(GoalProperty, value);
         }
 
-        public Canvas Foul
+        public Canvas Penalty
         {
-            get { return (Canvas) GetValue(FoulProperty); }
-            set { SetValue(FoulProperty, value); }
+            get => (Canvas) GetValue(PenaltyProperty);
+            set => SetValue(PenaltyProperty, value);
         }
 
 
@@ -159,7 +159,7 @@ namespace SelinaTimeLine.Controls
 
             //dc.DrawGeometry(new SolidColorBrush(fillColor), new Pen(new SolidColorBrush(borderColor), 1), geo);
 
-            var markerDrawing = type is PenaltyMarker ? FoulEventMarker : GoalEventMarker;
+            var markerDrawing = type is PenaltyMarker ? PenaltyMarkerIcon : GoalMarkerIcon;
 
             if (markerDrawing == null)
             {
