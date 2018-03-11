@@ -26,6 +26,22 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Canvas x:Key="GoalEventMarker"
+                Height="20"
+                Width="20">
+            <Path Data="M 0,0 L 6,15 L -6,15Z"
+                  StrokeThickness="1"
+                  Stroke="DarkBlue"
+                  Fill="Blue"/>
+        </Canvas>
+        <Canvas x:Key="FoulEventMarker"
+                Height="20"
+                Width="7">
+            <Path Data="M 0,0 H 5 V 15 H 0 V 0"
+                  StrokeThickness="1"
+                  Stroke="DarkRed"
+                  Fill="Red"/>
+        </Canvas>
         <ControlTemplate x:Key="MainSliderTemplate" TargetType="{x:Type Slider}">
             <Grid>
                 <Grid.RowDefinitions>
@@ -40,7 +56,9 @@
                                Opacity=".5"/>
                 </Canvas>
                 <controls:TimeLineTickBar Grid.Row="2"
-                                          EventMarkers="{Binding ElementName=_self, Path=EventMarkers}" />
+                                          EventMarkers="{Binding ElementName=_self, Path=EventMarkers}"
+                                          Goal="{StaticResource GoalEventMarker}"
+                                          Foul="{StaticResource FoulEventMarker}"/>
                 <Track x:Name="PART_Track" Grid.Row="1">
                     <Track.DecreaseRepeatButton>
                         <RepeatButton Command="{x:Static Slider.DecreaseLarge}"
@@ -78,6 +96,7 @@
                 
             </Grid>
         </ControlTemplate>
+        
         
     </UserControl.Resources>
     
